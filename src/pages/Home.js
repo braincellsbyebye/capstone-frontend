@@ -5,8 +5,10 @@ import {
   Button, ClickAwayListener, Grow, Popper, MenuItem, MenuList, Stack
 } from '@mui/material';
 import { Icon } from "@iconify/react";
+import { useHistory } from 'react-router-dom';
 
 const Home = () => {
+  const history = useHistory();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -41,6 +43,13 @@ const Home = () => {
     prevOpen.current = open;
   }, [open]);
 
+  function logout()
+  {
+    localStorage.clear();
+    history.push("/login")
+  }
+
+  let user = JSON.parse(localStorage.getItem('user-info'))
   return (
     <Box sx={{ display: 'flex' }}>
       <AppBar component="nav">
@@ -52,8 +61,8 @@ const Home = () => {
           >
             <Skeleton variant="circular" width={40} height={40} sx={{ backgroundColor: 'rgba(255, 255, 255, 0.75)' }} />
             <Typography sx={{ display: 'flex', flexDirection: 'column', ml: 1 }}>
-              <Typography>Name</Typography>
-              <Typography>User ID</Typography>
+              <h5>{user.name}</h5>
+              <h6>{user.email}</h6>
             </Typography>
           </Typography>
           <Box>
@@ -70,6 +79,7 @@ const Home = () => {
               onClick={handleToggle}>
               <Icon icon="carbon:notification-filled" />
             </IconButton>
+            <button onClick={logout}>Log Out</button>
             <Popper
               open={open}
               anchorEl={anchorRef.current}

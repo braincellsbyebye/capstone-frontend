@@ -1,8 +1,35 @@
-import React from "react";
-import { Typography, IconButton } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Typography, IconButton, Alert} from "@mui/material";
 import { Icon } from "@iconify/react";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
+
+  const history = useHistory();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function login(){
+    let item={email, password};
+    let result = await fetch("http://localhost:8000/api/login", {
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(item)
+    });
+    result = await result.json();
+    localStorage.setItem("user-info",JSON.stringify(result))
+    if ("error" in result) {
+      alert("test")
+    } else {
+      history.push("/home")
+    }
+
+
+  }
+
   return (
     <div className="container">
       <div className="content">
@@ -26,12 +53,12 @@ const Login = () => {
           LOGIN
         </Typography>
         <h1>Login Page</h1>
-        <input type="text" placeholder="email" className="form-control"/>
+        <input type="text" placeholder="email" onChange={(e) => setEmail(e.target.value)} className="form-control"/>
         <br />
-        <input type="text" placeholder="password" className="form-control"/>
+        <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="password" className="form-control"/>
         <br />
 
-        <button className="btn btn-primary">Login</button>
+        <button onClick={login} className="btn btn-primary">Login</button>
 
       </div>
     </div>
