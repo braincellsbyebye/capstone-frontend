@@ -17,19 +17,20 @@ import Verification from "./pages/Verification";
 import CreateNewPassword from "./pages/CreateNewPassword";
 import Form from "./pages/Form";
 import DataVisual from './pages/DataVisual';
+import Appointment from './pages/Appointment';
 
 import axios from 'axios';
-axios.defaults.baseURL = "http://localhost:8000/";
+
 
 function App() {
+  axios.defaults.baseURL = "http://localhost:8000/";
   return (
+    
     <div className="App">
         <Router>
-
-          <Navbar />
-
           <Switch>
             <Route path="/home"component={Home} />
+            <Route path="/apt"component={Appointment} />
             <Route path="/specialistdescription"component={SpecialistDescription} />
             <Route path="/login"component={Login} />
             <Route path="/signup"component={Signup} />
