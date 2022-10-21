@@ -1,13 +1,13 @@
 import { Typography, IconButton } from "@mui/material";
 import { Icon } from "@iconify/react";
 import React, {useState} from 'react';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Signup = () => {
 
   const [name, setName]=useState("");
   const [password, setPassword]=useState("");
   const [email, setEmail]=useState("");
-  const history=useHistory();
+  const history = useNavigate();
 
   async function signup(){
     let item={name,password,email}
@@ -25,7 +25,7 @@ const Signup = () => {
     result = await result.json()
     localStorage.setItem("user-info",JSON.stringify(result))
     alert("User Created")
-    history.push("/login")
+    history("/login")
   }
 
   return (

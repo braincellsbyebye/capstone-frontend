@@ -5,10 +5,10 @@ import {
   Button, ClickAwayListener, Grow, Popper, MenuItem, MenuList, Stack
 } from '@mui/material';
 import { Icon } from "@iconify/react";
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
-  const history = useHistory();
+  const history = useNavigate();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 

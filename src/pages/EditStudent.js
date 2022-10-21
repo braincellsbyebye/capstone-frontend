@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {Link, useHistory} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
 function EditStudent(props) {
 
-    const history = useHistory();
+    const history = useNavigate();
     const [loading, setLoading] = useState(true);
     const [studentInput, setStudent] = useState([]);
     const [errorInput, setError] = useState([]);

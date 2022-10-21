@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Typography, IconButton, Alert} from "@mui/material";
 import { Icon } from "@iconify/react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
-  const history = useHistory();
+  const history = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,7 +24,7 @@ const Login = () => {
     if ("error" in result) {
       alert("Login Credentials do not match")
     } else {
-      history.push("/students")
+      history("/students")
     }
 
 
