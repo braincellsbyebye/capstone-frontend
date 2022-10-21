@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
+import Navbar from './Navbar';
 
 function AddStudent() {
 
@@ -60,6 +61,8 @@ function AddStudent() {
     }
 
     return (
+        <>
+        <Navbar />
         <div>
             <div className="container">
                 <div className="row justify-content-center">
@@ -67,7 +70,7 @@ function AddStudent() {
                         <div className="card">
                             <div className="card-header">
                                 <h4>Add Students 
-                                    <Link to={'/'} className="btn btn-danger btn-sm float-end"> BACK</Link>
+                                    <Link to={'/students'} className="btn btn-danger btn-sm float-end"> BACK</Link>
                                 </h4>
                             </div>
                             <div className="card-body">
@@ -120,6 +123,7 @@ function AddStudent() {
                 </div>
             </div>
         </div>
+        </>
     );
 
 }

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
+import Navbar from './Navbar';
 
 function ViewStudent() {
 
@@ -71,6 +72,8 @@ function ViewStudent() {
     }
 
     return (
+        <>
+        <Navbar />
         <div>
             <div className="container">
                 <div className="row">
@@ -109,6 +112,7 @@ function ViewStudent() {
                 </div>
             </div>
         </div>
+        </>
     );
 
 }
