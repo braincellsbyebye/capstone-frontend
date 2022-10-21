@@ -85,7 +85,6 @@ function ViewStudent() {
                                 </h4>
                             </div>
                             <div className="card-body">
-                                
                                 <table className="table table-bordered table-striped">
                                     <thead>
                                         <tr>

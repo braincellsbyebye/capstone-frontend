@@ -22,7 +22,7 @@ const Login = () => {
     result = await result.json();
     localStorage.setItem("user-info",JSON.stringify(result))
     if ("error" in result) {
-      alert("test")
+      alert("Login Credentials do not match")
     } else {
       history.push("/students")
     }
@@ -53,9 +53,9 @@ const Login = () => {
           LOGIN
         </Typography>
         <h1>Login Page</h1>
-        <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} className="form-control"/>
+        <input type="text" style={{ height:50 }} placeholder="Email" onChange={(e) => setEmail(e.target.value)} className="form-control"/>
         <br />
-        <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password" className="form-control"/>
+        <input type="password" style={{ height:50 }} onChange={(e) => setPassword(e.target.value)} placeholder="Password" className="form-control"/>
         <br />
 
         <button onClick={login} className="btn btn-primary">Login</button>

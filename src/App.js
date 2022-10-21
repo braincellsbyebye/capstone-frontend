@@ -18,6 +18,8 @@ import CreateNewPassword from "./pages/CreateNewPassword";
 import Form from "./pages/Form";
 import DataVisual from './pages/DataVisual';
 import Appointment from './pages/Appointment';
+import DentalAppointment from './pages/DentalApp'
+import AptIndex from './pages/AppointmentIndex';
 
 import axios from 'axios';
 
@@ -44,6 +46,8 @@ function App() {
             <Route path="/students" component={ViewStudent} />
             <Route path="/add-students" component={AddStudent} />
             <Route path="/edit-student/:id" component={EditStudent} />
+            <Route path="/dentalapp" component={DentalAppointment} />
+            <Route path="/appindex" component={AptIndex} />
 
           </Switch>
         </Router>

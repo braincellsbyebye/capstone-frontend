@@ -24,6 +24,7 @@ const Signup = () => {
     })
     result = await result.json()
     localStorage.setItem("user-info",JSON.stringify(result))
+    alert("User Created")
     history.push("/login")
   }
 
@@ -51,11 +52,11 @@ const Signup = () => {
         </Typography>
         <div className="col-sm-6 offset-sm-3">
           <h1>Register</h1>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="form-control" placeholder="name"/>
+          <input type="text" style={{ height:50 }} value={name} onChange={(e) => setName(e.target.value)} className="form-control" placeholder="name"/>
           <br />
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" placeholder="password"/>
+          <input type="password" style={{ height:50 }} value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" placeholder="password"/>
           <br />
-          <input type="text"  value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="email"/>
+          <input type="text" style={{ height:50 }} value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="email"/>
           <br />
           <button  onClick={signup} className="btn btn-primary" >Sign Up</button>
         </div>

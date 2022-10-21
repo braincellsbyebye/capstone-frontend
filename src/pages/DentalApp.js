@@ -3,14 +3,14 @@ import {Link, useHistory} from 'react-router-dom';
 
 import axios from 'axios';
 
-class Appointment extends Component
+class DentalAppointment extends Component
 {
     state = {
         appointment: [],
         loading: true,
     }
     async componentDidMount(){
-        const res = await axios.get('http://localhost:8000/api/appointment');
+        const res = await axios.get('http://localhost:8000/api/dentalappointment');
         
         if (res.data.status === 200)
         {
@@ -52,7 +52,7 @@ class Appointment extends Component
                     <div className="col-md-12">
                         <div className="card">
                             <div className="card-header">
-                                <h4>Clinic Appointments <Link to={'/appindex'} className="btn btn-danger btn-sm float-end"> BACK</Link></h4>
+                                <h4>Dental Appointments <Link to={'/appindex'} className="btn btn-danger btn-sm float-end"> BACK</Link></h4>
                             </div>
                             <div className="card-body">
                                 
@@ -82,6 +82,6 @@ class Appointment extends Component
     }
 }
 
-export default Appointment;
+export default DentalAppointment;
 
     
