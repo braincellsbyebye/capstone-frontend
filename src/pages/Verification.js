@@ -5,7 +5,7 @@ function Verification() {
   return (
   <>
     <div class="header">
-        <text>  'Hippo-Campus'</text>
+        <text>'Hippo-Campus'</text>
     </div>
 
     <div class="subheader">

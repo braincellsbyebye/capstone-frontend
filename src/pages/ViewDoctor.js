@@ -1,38 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
 import Navbar from "./Navbar";
 
-function ViewStudent() {
+function ViewDoctor() {
   const [loading, setLoading] = useState(true);
-  const [students, setStudents] = useState([]);
-
-  const history = useNavigate();
-  function logout()
-  {
-    localStorage.clear();
-    history("/login")
-  }
-
-  let user = JSON.parse(localStorage.getItem('user-info'))
+  const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
-    axios.get(`/api/students`).then((res) => {
+    axios.get(`/api/doctors`).then((res) => {
       if (res.status === 200) {
-        setStudents(res.data.students);
+        setDoctors(res.data.doctors);
         setLoading(false);
       }
     });
   }, []);
 
-  const deleteStudent = (e, id) => {
+  const deleteDoctor = (e, id) => {
     e.preventDefault();
 
     const thisClicked = e.currentTarget;
     thisClicked.innerText = "Deleting";
 
-    axios.delete(`/api/delete-student/${id}`).then((res) => {
+    axios.delete(`/api/delete-doctor/${id}`).then((res) => {
       if (res.data.status === 200) {
         swal("Deleted!", res.data.message, "success");
         thisClicked.closest("tr").remove();
@@ -44,25 +35,20 @@ function ViewStudent() {
   };
 
   if (loading) {
-    return <h4>Loading Student Data...</h4>;
+    return <h4>Loading Doctor Data...</h4>;
   } else {
     var student_HTMLTABLE = "";
 
-    student_HTMLTABLE = students.map((item, index) => {
+    student_HTMLTABLE = doctors.map((item, index) => {
       return (
         <tr key={index}>
           <td>{item.id}</td>
-          <td>{item.name}</td>
-          <td>{item.bday}</td>
-          <td>{item.sex}</td>
-          <td>{item.phone}</td>
-          <td>{item.address}</td>
-          <td>{item.religion}</td>
-          <td>{item.cvs}</td>
+          <td>{item.docname}</td>
+          <td>{item.docposition}</td>
           <td>
             <Link
-              to={"/edit"}
-              state={students}
+              to={"/edit-doctor"}
+              state={doctors}
               className="btn btn-success btn-sm"
             >
               Edit
@@ -71,7 +57,7 @@ function ViewStudent() {
           <td>
             <button
               type="button"
-              onClick={(e) => deleteStudent(e, item.id)}
+              onClick={(e) => deleteDoctor(e, item.id)}
               className="btn btn-danger btn-sm"
             >
               Delete
@@ -86,19 +72,14 @@ function ViewStudent() {
     <>
       <Navbar />
       <div>
-        <div>
-          <h5>{user.name}</h5>
-          <h6>{user.email}</h6>
-          <button onClick={logout} >Log Out</button>
-        </div>
         <h4>
-          Students Data
+          Doctor Data
           <Link
-            to={"/add-students"}
+            to={"/add-doctors"}
             className="btn btn-primary btn-sm float-end"
           >
             {" "}
-            Add Student
+            Add Doctor
           </Link>
         </h4>
       </div>
@@ -108,14 +89,8 @@ function ViewStudent() {
             <tr>
               <th>ID</th>
               <th>Name</th>
-              <th>Birthdate</th>
-              <th>Sex</th>
-              <th>Phone</th>
-              <th>Address</th>
-              <th>Religion</th>
-              <th>Civil Status</th>
-              <th>Edit</th>
-              <th>Delete</th>
+              <th>Doctor Name</th>
+              <th>Doctor Position</th>
             </tr>
           </thead>
           <tbody>{student_HTMLTABLE}</tbody>
@@ -125,4 +100,4 @@ function ViewStudent() {
   );
 }
 
-export default ViewStudent;
+export default ViewDoctor;

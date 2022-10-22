@@ -18,10 +18,16 @@ function Navbar ()
                 <Link className="nav-link" to="/">Home</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/students">Student</Link>
+                <Link className="nav-link" to="/students">Students</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/add-students">Add Student</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/doctors">Doctors</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/add-doctors">Add Doctor</Link>
               </li>
             </ul>
           </div>

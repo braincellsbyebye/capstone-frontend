@@ -54,9 +54,9 @@ const Signup = () => {
           <h1>Register</h1>
           <input type="text" style={{ height:50 }} value={name} onChange={(e) => setName(e.target.value)} className="form-control" placeholder="name"/>
           <br />
-          <input type="password" style={{ height:50 }} value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" placeholder="password"/>
-          <br />
           <input type="text" style={{ height:50 }} value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="email"/>
+          <br />
+          <input type="password" style={{ height:50 }} value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" placeholder="password"/>
           <br />
           <button  onClick={signup} className="btn btn-primary" >Sign Up</button>
         </div>

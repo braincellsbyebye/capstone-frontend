@@ -4,12 +4,9 @@ import { Route, Routes} from 'react-router-dom';
 
 import ViewStudent from './pages/ViewStudent';
 import AddStudent from './pages/AddStudent.js';
-import EditStudent from './pages/EditStudent';
 import Home from "./pages/Home";
-import SpecialistDescription from "./pages/SpecialistDescription";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Selection from "./pages/Selection";
 import LoginSignup from "./pages/LoginSignup";
 import ForgotPassword from "./pages/ForgotPassword";
 import Verification from "./pages/Verification";
@@ -20,6 +17,9 @@ import Appointment from './pages/Appointment';
 import DentalAppointment from './pages/DentalApp'
 import AptIndex from './pages/AppointmentIndex';
 import Edit from './pages/Edit'
+import ViewDoctor from './pages/ViewDoctor';
+import AddDoctor from './pages/AddDoctor';
+import EditDoc from './pages/EditDoc';
 
 import axios from 'axios';
 
@@ -30,13 +30,11 @@ function App() {
     
     <div className="App">
           <Routes>
-            <Route path="/"element={<Selection />} />
+            <Route path="/"element={<LoginSignup/>} />
             <Route path="/home"element={<Home />} />
             <Route path="/apt"element={<Appointment/>} />
-            <Route path="/specialistdescription"element={<SpecialistDescription/>} />
             <Route path="/login"element={<Login/>} />
             <Route path="/signup"element={<Signup/>} />
-            <Route path="/loginsignup"element={<LoginSignup/>} />
             <Route path="/forgotpassword"element={<ForgotPassword/>} />
             <Route path="/verification"element={<Verification/>} />
             <Route path="/createnewpassword"element={<CreateNewPassword/>} />
@@ -44,10 +42,15 @@ function App() {
             <Route path="/datavisual"element={<DataVisual/>} />
             <Route path="/students" element={<ViewStudent/>} />
             <Route path="/add-students" element={<AddStudent/>} />
-            <Route path="/edit-student/:id" element={<EditStudent/>} />
+
+
             <Route path="/dentalapp" element={<DentalAppointment/>} />
             <Route path="/appindex" element={<AptIndex/>} />
             <Route path="/edit" element={<Edit/>} />
+            <Route path="/doctors" element={<ViewDoctor/>} />
+            <Route path="/add-doctors" element={<AddDoctor/>} />
+
+            <Route path="/edit-doctor" element={<EditDoc/>} />
           </Routes>
     </div>
   );
