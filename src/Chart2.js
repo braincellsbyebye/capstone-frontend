@@ -11,10 +11,7 @@ class Chart2 extends Component {
 
     componentDidMount () {
 
-    const data = [12,36,55,25,35,10,40];
-
-    const w = 500;
-    const h = 400;
+    const {data, w, h, color} = this.props;
 
     const accessToRef = d3.select(this.myRef.current)
         .append("svg")
@@ -32,7 +29,7 @@ class Chart2 extends Component {
         .attr("y", (d,i) => h-10*d)
         .attr("width", 65)
         .attr("height", (d,i) => d*10)
-        .attr("fill", (d,i) => d > 35 ? "tomato" : "yellow");
+        .attr("fill", color);
 
     }
 

@@ -36,7 +36,7 @@ function AddDoctor() {
                     docposition: '',
                     error_list: [],
                 });
-                history('/doctors');
+                history('/dashboard');
             }
             else if(res.data.status === 422)
             {
@@ -50,7 +50,7 @@ function AddDoctor() {
         <Navbar />
         <div>
             <h4>Add Doctor 
-                <Link to={'/doctors'} className="btn btn-danger btn-sm float-end"> BACK</Link>
+                <Link to={'/dashboard'} className="btn btn-danger btn-sm float-end"> BACK</Link>
             </h4>
         </div>
         <div className="card-body">

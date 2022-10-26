@@ -51,7 +51,7 @@ function AddStudent() {
                     cvs:'',
                     error_list: [],
                 });
-                history('/students');
+                history('/dashboard');
             }
             else if(res.data.status === 422)
             {
@@ -65,7 +65,7 @@ function AddStudent() {
         <Navbar />
         <div>
                                 <h4>Add Students 
-                                    <Link to={'/students'} className="btn btn-danger btn-sm float-end"> BACK</Link>
+                                    <Link to={'/dashboard'} className="btn btn-danger btn-sm float-end"> BACK</Link>
                                 </h4>
                             </div>
                             <div className="card-body">

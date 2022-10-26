@@ -9,7 +9,7 @@ const EditDoc = ({userdata}) => {
     const location = useLocation();
     const history = useNavigate();
     const [errorInput, setError] = useState([]);
-    const state = location.state[0];
+    const state = location.state;
     const [doctorInput, setDoctors] = useState(state);
 
 
@@ -32,7 +32,7 @@ const EditDoc = ({userdata}) => {
             {
                 swal("Success",res.data.message,"success");
                 setError([]);
-                history('/doctors');
+                history('/dashboard');
             }
             else if(res.data.status === 422)
             {
@@ -42,7 +42,7 @@ const EditDoc = ({userdata}) => {
             else if(res.data.status === 404)
             {
                 swal("Error",res.data.message,"error");
-                history('/doctors');
+                history('/dashboard');
             }
         });
     }
@@ -51,7 +51,7 @@ const EditDoc = ({userdata}) => {
         <Navbar />
         <div>
             <h4>Edit Doctor
-                <Link to={'/doctors'} className="btn btn-danger btn-sm float-end"> BACK</Link>
+                <Link to={'/dashboard'} className="btn btn-danger btn-sm float-end"> BACK</Link>
              </h4>
             <form onSubmit={(e) => updateDoctor(e)} >
                 <div className="form-group mb-3">

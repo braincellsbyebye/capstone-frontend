@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Typography, IconButton, Alert} from "@mui/material";
 import { Icon } from "@iconify/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
 
@@ -24,7 +24,7 @@ const Login = () => {
     if ("error" in result) {
       alert("Login Credentials do not match")
     } else {
-      history("/students")
+      history("/dashboard")
     }
 
 
@@ -34,7 +34,7 @@ const Login = () => {
     <div className="container">
       <div className="content">
         <div className="heading-container">
-          <IconButton href="/loginsignup" color="secondary" size="large">
+          <IconButton href="/" color="secondary" size="large">
             <Icon icon="eva:arrow-ios-back-fill" />
           </IconButton>
 
@@ -57,9 +57,9 @@ const Login = () => {
         <br />
         <input type="password" style={{ height:50 }} onChange={(e) => setPassword(e.target.value)} placeholder="Password" className="form-control"/>
         <br />
-
+        <p>Not yet registered? <Link to ="/signup">Register here</Link></p>
         <button onClick={login} className="btn btn-primary">Login</button>
-
+        
       </div>
     </div>
   );

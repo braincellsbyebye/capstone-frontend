@@ -32,7 +32,7 @@ const Signup = () => {
     <div className="container">
       <div className="content">
         <div className="heading-container">
-          <IconButton href="/loginsignup" color="secondary" size="large">
+          <IconButton href="/login" color="secondary" size="large">
             <Icon icon="eva:arrow-ios-back-fill" />
           </IconButton>
 

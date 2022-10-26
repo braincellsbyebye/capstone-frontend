@@ -4,9 +4,10 @@ import axios from "axios";
 import swal from "sweetalert";
 import Navbar from "./Navbar";
 
-function ViewStudent() {
+function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [students, setStudents] = useState([]);
+  const [doctors, setDoctors] = useState([]);
 
   const history = useNavigate();
   function logout()
@@ -21,6 +22,12 @@ function ViewStudent() {
     axios.get(`/api/students`).then((res) => {
       if (res.status === 200) {
         setStudents(res.data.students);
+        setLoading(false);
+      }
+    });
+    axios.get(`/api/doctors`).then((res) => {
+      if (res.status === 200) {
+        setDoctors(res.data.doctors);
         setLoading(false);
       }
     });
@@ -62,7 +69,7 @@ function ViewStudent() {
           <td>
             <Link
               to={"/edit"}
-              state={students}
+              state={item}
               className="btn btn-success btn-sm"
             >
               Edit
@@ -82,16 +89,70 @@ function ViewStudent() {
     });
   }
 
+  const deleteDoctor = (e, id) => {
+    e.preventDefault();
+
+    const thisClicked = e.currentTarget;
+    thisClicked.innerText = "Deleting";
+
+    axios.delete(`/api/delete-doctor/${id}`).then((res) => {
+      if (res.data.status === 200) {
+        swal("Deleted!", res.data.message, "success");
+        thisClicked.closest("tr").remove();
+      } else if (res.data.status === 404) {
+        swal("Error", res.data.message, "error");
+        thisClicked.innerText = "Delete";
+      }
+    });
+  };
+
+  if (loading) {
+    return <h4>Loading Doctor Data...</h4>;
+  } else {
+    var doctor_TABLE = "";
+
+    doctor_TABLE = doctors.map((doctor, index) => {
+      return (
+        <tr key={index}>
+          <td>{doctor.id}</td>
+          <td>{doctor.docname}</td>
+          <td>{doctor.docposition}</td>
+          <td>
+            <Link
+              to={"/edit-doctor"}
+              state={doctor}
+              className="btn btn-success btn-sm"
+            >
+              Edit
+            </Link>
+          </td>
+          <td>
+            <button
+              type="button"
+              onClick={(e) => deleteDoctor(e, doctor.id)}
+              className="btn btn-danger btn-sm"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      );
+    });
+  }
+
   return (
     <>
       <Navbar />
       <div>
-        <div>
+        <div style={{ marginLeft: 20 }}>
           <h5>{user.name}</h5>
           <h6>{user.email}</h6>
           <button onClick={logout} >Log Out</button>
         </div>
-        <h4>
+        <br></br>
+        <hr></hr>
+        <br></br>
+        <h4 style={{ marginLeft: 50 }}>
           Students Data
           <Link
             to={"/add-students"}
@@ -121,8 +182,43 @@ function ViewStudent() {
           <tbody>{student_HTMLTABLE}</tbody>
         </table>
       </div>
+      <br></br>
+      <hr></hr>
+      <br></br>
+      <div>
+        <h4 style={{ marginLeft: 50 }}>
+          Doctor Data
+          <Link
+            to={"/add-doctors"}
+            className="btn btn-primary btn-sm float-end"
+          >
+            {" "}
+            Add Doctor
+          </Link>
+        </h4>
+      </div>
+      <div className="card-body">
+        <table className="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Doctor Name</th>
+              <th>Doctor Position</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>{doctor_TABLE}</tbody>
+        </table>
+      </div>
+      <br></br>
+      <hr></hr>
+      <br></br>
+      <div style={{ marginLeft: 50 }}>
+        <h4>Announcements</h4>
+      </div>
     </>
   );
 }
 
-export default ViewStudent;
+export default Dashboard;

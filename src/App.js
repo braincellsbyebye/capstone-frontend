@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Routes} from 'react-router-dom';
 
 
-import ViewStudent from './pages/ViewStudent';
 import AddStudent from './pages/AddStudent.js';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -17,9 +16,9 @@ import Appointment from './pages/Appointment';
 import DentalAppointment from './pages/DentalApp'
 import AptIndex from './pages/AppointmentIndex';
 import Edit from './pages/Edit'
-import ViewDoctor from './pages/ViewDoctor';
 import AddDoctor from './pages/AddDoctor';
 import EditDoc from './pages/EditDoc';
+import Dashboard from './pages/ViewStudent.js';
 
 import axios from 'axios';
 
@@ -40,14 +39,12 @@ function App() {
             <Route path="/createnewpassword"element={<CreateNewPassword/>} />
             <Route path="/form"element={<Form/>} />
             <Route path="/datavisual"element={<DataVisual/>} />
-            <Route path="/students" element={<ViewStudent/>} />
+            <Route path="/dashboard" element={<Dashboard/>} />
             <Route path="/add-students" element={<AddStudent/>} />
-
 
             <Route path="/dentalapp" element={<DentalAppointment/>} />
             <Route path="/appindex" element={<AptIndex/>} />
             <Route path="/edit" element={<Edit/>} />
-            <Route path="/doctors" element={<ViewDoctor/>} />
             <Route path="/add-doctors" element={<AddDoctor/>} />
 
             <Route path="/edit-doctor" element={<EditDoc/>} />

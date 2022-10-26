@@ -9,9 +9,9 @@ const Edit = ({userdata}) => {
     const location = useLocation();
     const history = useNavigate();
     const [errorInput, setError] = useState([]);
-    const state = location.state[0];
+    const state = location.state;
     const [studentInput, setStudent] = useState(state);
-
+    
 
     const handleInput = (e) => {
         e.persist();
@@ -37,7 +37,7 @@ const Edit = ({userdata}) => {
             {
                 swal("Success",res.data.message,"success");
                 setError([]);
-                history('/students');
+                history('/dashboard');
             }
             else if(res.data.status === 422)
             {
@@ -47,7 +47,7 @@ const Edit = ({userdata}) => {
             else if(res.data.status === 404)
             {
                 swal("Error",res.data.message,"error");
-                history('/students');
+                history('/dashboard');
             }
         });
     }
@@ -56,7 +56,7 @@ const Edit = ({userdata}) => {
         <Navbar />
         <div>
             <h4>Edit Students 
-                <Link to={'/students'} className="btn btn-danger btn-sm float-end"> BACK</Link>
+                <Link to={'/dashboard'} className="btn btn-danger btn-sm float-end"> BACK</Link>
              </h4>
             <form onSubmit={(e) => updateStudent(e)} >
                 <div className="form-group mb-3">
