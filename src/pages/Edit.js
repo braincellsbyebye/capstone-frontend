@@ -66,13 +66,16 @@ const Edit = ({userdata}) => {
                 </div>
                 <div className="form-group mb-3">
                     <label>Birthdate</label>
-                    <input type="text" style={{ height:50 }} name="bday" onChange={(e) => handleInput(e)} value={studentInput.bday}  className="form-control" />
+                    <input type="text" style={{ height:50 }} name="bday" onChange={(e) => handleInput(e)} value={studentInput.bday}  className="form-control" readOnly/>
                     <span className="text-danger">{errorInput.bday}</span>
                 </div>
                 <div className="form-group mb-3">
                     <label>Sex</label>
-                    <input type="text" style={{ height:50 }} name="sex" onChange={(e) => handleInput(e)} value={studentInput.sex}  className="form-control" />
-                    <span className="text-danger">{errorInput.sex}</span>
+                    <select type="text" name="sex" onChange={(e) => handleInput(e)} value={studentInput.sex} className="form-control">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
                 </div>
                 <div className="form-group mb-3">
                     <label>Phone</label>
@@ -86,13 +89,22 @@ const Edit = ({userdata}) => {
                 </div>
                 <div className="form-group mb-3">
                     <label>Religion</label>
-                    <input type="text" style={{ height:50 }} name="religion" onChange={(e) => handleInput(e)} value={studentInput.religion}  className="form-control" />
+                    <select type="text"  name="religion" onChange={(e) => handleInput(e)}  value={studentInput.religion} className="form-control">
+                        <option value="RomanCatholic">Roman Catholic</option>
+                        <option value="Iglesia">Iglesia</option>
+                        <option value="BornAgain">Born Again</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
                     <span className="text-danger">{errorInput.religion}</span>
                 </div>
                 <div className="form-group mb-3">
                     <label>Civil Status</label>
-                    <input type="text" style={{ height:50 }} name="cvs" onChange={(e) => handleInput(e)} value={studentInput.cvs}  className="form-control" />
-                    <span className="text-danger">{errorInput.cvs}</span>
+                    <select type="text"  name="cvs" onChange={(e) => handleInput(e)}  value={studentInput.cvs} className="form-control">
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Seperated">Seperated</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
                 </div>
                 <div className="form-group mb-3">
                     <button type="submit" id="updatebtn" className="btn btn-primary">Update Student</button>

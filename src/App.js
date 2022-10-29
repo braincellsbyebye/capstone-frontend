@@ -21,6 +21,8 @@ import EditDoc from './pages/EditDoc';
 import Dashboard from './pages/ViewStudent.js';
 
 import axios from 'axios';
+import MedCert from './pages/MedCert.js';
+import EditMedCert from './pages/EditMedCert.js';
 
 
 function App() {
@@ -46,7 +48,8 @@ function App() {
             <Route path="/appindex" element={<AptIndex/>} />
             <Route path="/edit" element={<Edit/>} />
             <Route path="/add-doctors" element={<AddDoctor/>} />
-
+            <Route path="/med" element={<MedCert/>}/>
+            <Route path="/editmed" element={<EditMedCert/>}/>
             <Route path="/edit-doctor" element={<EditDoc/>} />
           </Routes>
     </div>
