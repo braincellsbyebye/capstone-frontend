@@ -24,7 +24,8 @@ const Edit = ({userdata}) => {
         
         const student_id = state.id;
         const data = {
-            name: studentInput.name || state.name,
+            fname: studentInput.fname || state.fname,
+            lname: studentInput.lname || state.lname,
             bday: studentInput.bday || state.bday,
             sex: studentInput.sex || state.sex,
             phone: studentInput.phone || state.phone,
@@ -54,15 +55,20 @@ const Edit = ({userdata}) => {
     return(
         <>
         <Navbar />
-        <div>
+        <div className="col-sm-6 offset-sm-3">
             <h4>Edit Students 
                 <Link to={'/dashboard'} className="btn btn-danger btn-sm float-end"> BACK</Link>
              </h4>
             <form onSubmit={(e) => updateStudent(e)} >
                 <div className="form-group mb-3">
-                    <label>Name</label>
-                    <input style={{ height:50 }} type="text" name="name" onChange={(e) => handleInput(e)} value={studentInput.name} className="form-control" />
-                    <span className="text-danger">{errorInput.name}</span>
+                    <label>First Name</label>
+                    <input style={{ height:50 }} type="text" name="fname" onChange={(e) => handleInput(e)} value={studentInput.fname} className="form-control" />
+                    <span className="text-danger">{errorInput.fname}</span>
+                </div>
+                <div className="form-group mb-3">
+                    <label>Last Name</label>
+                    <input style={{ height:50 }} type="text" name="lname" onChange={(e) => handleInput(e)} value={studentInput.lname} className="form-control" />
+                    <span className="text-danger">{errorInput.lname}</span>
                 </div>
                 <div className="form-group mb-3">
                     <label>Birthdate</label>

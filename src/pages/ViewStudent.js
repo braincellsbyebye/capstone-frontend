@@ -63,7 +63,8 @@ function Dashboard() {
       return (
         <tr key={index}>
           <td>{item.id}</td>
-          <td>{item.name}</td>
+          <td>{item.fname}</td>
+          <td>{item.lname}</td>
           <td>{item.bday}</td>
           <td>{item.sex}</td>
           <td>{item.phone}</td>
@@ -149,7 +150,9 @@ function Dashboard() {
       <Navbar />
       <div>
         <div style={{ marginLeft: 20 }}>
-          <h5>{user.name}</h5>
+          <Link to='/userprofile'>
+            <h5>{user.name}</h5>
+          </Link>
           <h6>{user.email}</h6>
           <button onClick={logout} >Log Out</button>
         </div>
@@ -168,12 +171,13 @@ function Dashboard() {
           </Link>
         </h4>
       </div>
-      <div className="card-body">
+      <div className="col-sm-6 offset-sm-3">
         <table className="table table-bordered table-striped">
           <thead>
             <tr>
               <th>ID</th>
-              <th>Name</th>
+              <th>First Name</th>
+              <th>Last Name</th>
               <th>Birthdate</th>
               <th>Sex</th>
               <th>Phone</th>

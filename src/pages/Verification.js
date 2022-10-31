@@ -1,4 +1,3 @@
-import './css/Verification.css';
 
 
 function Verification() {

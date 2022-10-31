@@ -35,7 +35,8 @@ class Appointment extends Component
                 return(
                     <tr key={item.id}>
                         <td>{item.id}</td>
-                        <td>{item.name}</td>
+                        <td>{item.fname}</td>
+                        <td>{item.lname}</td>
                         <td>{item.aptcategory}</td>
                         <td>{item.aptdate}</td>
                         <td>{item.apttime}</td>
@@ -60,7 +61,8 @@ class Appointment extends Component
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Name</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
                                             <th>Apt Category</th>
                                             <th>Apt Date</th>
                                             <th>Apt Time</th>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar";
+import swal from "sweetalert";
 
 function MedCert() {
   const [loading, setLoading] = useState(true);
@@ -16,6 +17,23 @@ function MedCert() {
       }
     });
   }, []);
+
+  const deleteMedCert = (e, id) => {
+    e.preventDefault();
+
+    const thisClicked = e.currentTarget;
+    thisClicked.innerText = "Deleting";
+
+    axios.delete(`/api/delete-medcert/${id}`).then((res) => {
+      if (res.data.status === 200) {
+        swal("Deleted!", res.data.message, "success");
+        thisClicked.closest("tr").remove();
+      } else if (res.data.status === 404) {
+        swal("Error", res.data.message, "error");
+        thisClicked.innerText = "Delete";
+      }
+    });
+  };
 
 
   if (loading) {
@@ -40,6 +58,15 @@ function MedCert() {
               Edit
             </Link>
           </td>
+          <td>
+            <button
+              type="button"
+              onClick={(e) => deleteMedCert(e, item.id)}
+              className="btn btn-danger btn-sm"
+            >
+              Delete
+            </button>
+          </td>
         </tr>
       );
     });
@@ -49,7 +76,15 @@ function MedCert() {
     <>
       <Navbar />
       <div>
-        <br></br>
+        <h4>
+          Verify Medical Certificates
+          <Link to={"/dashboard"} className="btn btn-danger btn-sm float-end">
+            {" "}
+            BACK
+          </Link>
+          <br></br>
+          <br></br>
+        </h4>
       </div>
       <div className="card-body">
         <table className="table table-bordered table-striped">

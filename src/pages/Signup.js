@@ -1,7 +1,8 @@
-import { Typography, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { Icon } from "@iconify/react";
 import React, {useState} from 'react';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import './css/Signup.css';
 const Signup = () => {
 
   const [name, setName]=useState("");
@@ -29,41 +30,35 @@ const Signup = () => {
   }
 
   return (
-    <div className="container">
-      <div className="content">
-        <div className="heading-container">
-          <IconButton href="/login" color="secondary" size="large">
+    <div>
+      <div className='nav-square'>
+        <Link to='/login'>
+          <IconButton sx= {{ color: 'white', marginLeft: 5, marginTop: 5}}>
             <Icon icon="eva:arrow-ios-back-fill" />
           </IconButton>
-
-          <div className="heading-rounded">
-            <Typography variant="h3" sx={{ mb: 3 }}>
-              'Hippo-Campus'
-            </Typography>
-
-            <Typography variant="body1">
-              MSEUF's first beta web based and mobile application clinic management system
-            </Typography>
-          </div>
-        </div>
-
-        <Typography variant="h3" sx={{ textAlign: "center", my: 4 }}>
-          SIGN UP
-        </Typography>
-        <div className="col-sm-6 offset-sm-3">
-          <h1>Register</h1>
-          <input type="text" style={{ height:50 }} value={name} onChange={(e) => setName(e.target.value)} className="form-control" placeholder="name"/>
-          <br />
-          <input type="text" style={{ height:50 }} value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="email"/>
-          <br />
-          <input type="password" style={{ height:50 }} value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" placeholder="password"/>
-          <br />
-          <button  onClick={signup} className="btn btn-primary" >Sign Up</button>
-        </div>
-        
-
+        </Link>
+          <text style={{marginLeft: 80, fontWeight:'bold', fontSize:50, fontFamily:'sans-serif', color:'white'}}>  'Hippo-Campus'</text>
       </div>
-    </div>
+      <div class="hippo-logo">
+        <img src="/logo1.png" alt="bg" width={205} height={205}></img>
+      </div>
+
+      <div className='body'>
+        <text>MSEUF's first beta web based and mobile application clinic management system</text>
+      </div>
+      <div className='signup'>
+          <text> SIGN UP </text>
+      </div>
+        <div className="col-sm-6 offset-sm-3">
+          <input type="text" style={{ height:50 }} value={name} onChange={(e) => setName(e.target.value)} className="form-control" placeholder="Username"/>
+          <br />
+          <input type="text" style={{ height:50 }} value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="Email"/>
+          <br />
+          <input type="password" style={{ height:50 }} value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" placeholder="Password"/>
+          <br />
+          <button  onClick={signup} className="btnsignup" >Sign Up</button>
+        </div>
+      </div>
   );
 };
 

@@ -49,7 +49,7 @@ const EditDoc = ({userdata}) => {
     return(
         <>
         <Navbar />
-        <div>
+        <div className="col-sm-6 offset-sm-3">
             <h4>Edit Doctor
                 <Link to={'/dashboard'} className="btn btn-danger btn-sm float-end"> BACK</Link>
              </h4>

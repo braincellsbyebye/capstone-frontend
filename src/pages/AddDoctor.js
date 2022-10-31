@@ -48,12 +48,12 @@ function AddDoctor() {
     return (
         <>
         <Navbar />
-        <div>
+        <div className="col-sm-6 offset-sm-3">
             <h4>Add Doctor 
                 <Link to={'/dashboard'} className="btn btn-danger btn-sm float-end"> BACK</Link>
             </h4>
         </div>
-        <div className="card-body">
+        <div className="col-sm-6 offset-sm-3">
             
             <form onSubmit={saveDoctor} >
                 <div className="form-group mb-3">

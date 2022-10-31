@@ -7,7 +7,8 @@ import Navbar from "./Navbar";
 function AddStudent() {
   const history = useNavigate();
   const [studentInput, setStudent] = useState({
-    name: "",
+    fname: "",
+    lname: "",
     bday: "",
     sex: "",
     phone: "",
@@ -26,7 +27,8 @@ function AddStudent() {
     e.preventDefault();
 
     const data = {
-      name: studentInput.name,
+      fname: studentInput.fname,
+      lname: studentInput.lname,
       bday: studentInput.bday,
       sex: studentInput.sex,
       phone: studentInput.phone,
@@ -39,7 +41,8 @@ function AddStudent() {
       if (res.data.status === 200) {
         swal("Success!", res.data.message, "success");
         setStudent({
-          name: "",
+          fname: "",
+          lname: "",
           bday: "",
           sex: "",
           phone: "",
@@ -58,7 +61,7 @@ function AddStudent() {
   return (
     <>
       <Navbar />
-      <div>
+      <div className="col-sm-6 offset-sm-3">
         <h4>
           Add Students
           <Link to={"/dashboard"} className="btn btn-danger btn-sm float-end">
@@ -67,19 +70,31 @@ function AddStudent() {
           </Link>
         </h4>
       </div>
-      <div className="card-body">
+      <div className="col-sm-6 offset-sm-3">
         <form onSubmit={saveStudent}>
           <div className="form-group mb-3">
-            <label>Name</label>
+            <label>First Name</label>
             <input
               type="text"
-              name="name"
+              name="fname"
               style={{ height: 50 }}
               onChange={handleInput}
-              value={studentInput.name}
+              value={studentInput.fname}
               className="form-control"
             />
-            <span className="text-danger">{studentInput.error_list.name}</span>
+            <span className="text-danger">{studentInput.error_list.fname}</span>
+          </div>
+          <div className="form-group mb-3">
+            <label>Last Name</label>
+            <input
+              type="text"
+              name="lname"
+              style={{ height: 50 }}
+              onChange={handleInput}
+              value={studentInput.lname}
+              className="form-control"
+            />
+            <span className="text-danger">{studentInput.error_list.lname}</span>
           </div>
           <div className="form-group mb-3">
             <label>Birthdate</label>
