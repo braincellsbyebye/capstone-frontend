@@ -18,7 +18,7 @@ function Navbar ()
                 <Link className="nav-link" to="/dashboard">Home</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/about">About</Link>
+                <Link className="nav-link" to="/search">Search Student</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/add-students">Add Student</Link>

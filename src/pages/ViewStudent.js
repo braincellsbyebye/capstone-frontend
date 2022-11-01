@@ -4,11 +4,13 @@ import axios from "axios";
 import swal from "sweetalert";
 import Navbar from "./Navbar";
 import Chart2 from '../Chart2';
+import LineChart from "./LineChart";
 
 function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [students, setStudents] = useState([]);
   const [doctors, setDoctors] = useState([]);
+  
   const data2 = [25,10,15,20,25,30,35,40]
   const w = 900;
   const h = 500;
@@ -158,6 +160,7 @@ function Dashboard() {
         </div>
         <br></br>
         <Chart2 data={data2} w={w} h={h} color="green" />
+        <LineChart/>
         <hr></hr>
         <br></br>
         <h4 style={{ marginLeft: 50 }}>

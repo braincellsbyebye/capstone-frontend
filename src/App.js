@@ -25,6 +25,8 @@ import MedCert from './pages/MedCert.js';
 import EditMedCert from './pages/EditMedCert.js';
 import UserProfile from './pages/UserProfile.js';
 import About from './pages/About.js';
+import SearchStudent from './pages/Search.js';
+import LineChart from './pages/LineChart.js';
 
 
 function App() {
@@ -46,8 +48,10 @@ function App() {
             <Route path="/dashboard" element={<Dashboard/>} />
             <Route path="/add-students" element={<AddStudent/>} />
 
+            <Route path="/linechart" element={<LineChart />}/>
             <Route path="/dentalapp" element={<DentalAppointment/>} />
             <Route path="/appindex" element={<AptIndex/>} />
+            <Route path="/search" element={<SearchStudent/>} />
             <Route path="/edit" element={<Edit/>} />
             <Route path="/add-doctors" element={<AddDoctor/>} />
             <Route path="/med" element={<MedCert/>}/>
