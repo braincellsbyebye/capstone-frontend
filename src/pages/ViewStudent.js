@@ -171,7 +171,7 @@ function Dashboard() {
           <h6>Total Number of Female Students: {female}</h6>
           <h6>Total Number of Male Students: {male}</h6>
         </div>
-        
+        <br></br>
         <br></br>
         <Chart2 data={data2} w={w} h={h} color="green" />
         <div style={{ marginLeft: 800, marginTop: -450 }}>
