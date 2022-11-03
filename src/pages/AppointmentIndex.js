@@ -1,25 +1,33 @@
-
-
-
+import './css/AppointmentIndex.css';
+import {IconButton } from "@mui/material";
+import { Icon } from "@iconify/react";
+import { Link } from 'react-router-dom';
 
 function AptIndex() {  
+  let user = JSON.parse(localStorage.getItem('user-info'))
+  
   return (
 <>
 
 <div className='header-appointment'>
-    <div className='header-circle'>
+    <Link to="/dashboard">
+     <IconButton sx= {{ color: 'white', marginLeft: 5, marginTop: 5}}>
+        <Icon icon="eva:arrow-ios-back-fill" />
+        </IconButton>  
+    </Link>
+    <div className='user-profile-name'>
+      <text>{user.name}</text>
     </div>
-    <div className='header-title'>
-    <text>Name</text>
-      <br></br>
-      <text>UserID</text>
+    <div className='user-profile-email'>
+     <text>{user.email}</text>
     </div>
+  
       
 </div>
 
 <div className="header-image">
     <div className="card-body">
-        <img src="/appoint.png" width={1350} height={300}></img>
+        <img src="/appoint.png" alt='appoint' width={1350} height={300}></img>
 
     <div className="header-title">
          <text>Confirmation</text>
@@ -28,20 +36,25 @@ function AptIndex() {
         <div className="body-card">
          <div className="body-title">
             <text>Clinic Appointment</text>           
-         </div>   
+         </div>
+         <Link to='/apt'>
          <div className='clinic-image'>
-            <img src="/clinic1.png" width={80} height={80}></img>
-          </div>    
+            <img src="/clinic1.png" alt='clinic' width={80} height={80}></img>
+          </div>   
+          </Link>    
         </div>  
 
-
+        
+        
         <div className="body-card-one">
           <div className="body-title-one">
             <text>Dental Appointment</text>
           </div>
+        <Link to='/dentalapp'>
         <div className="dental-image">
-          <img src="/dent1.png" width={80} height={80}></img>
+          <img src="/dent1.png" alt='dent' width={80} height={80}></img>
         </div>
+        </Link>
 
         </div>
         </div>

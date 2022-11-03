@@ -10,9 +10,12 @@ function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [students, setStudents] = useState([]);
   const [doctors, setDoctors] = useState([]);
+  const [data, setData] = useState('');
+  const [female, setFemale] = useState('');
+  const [male, setMale] = useState('');
   
   const data2 = [25,10,15,20,25,30,35,40]
-  const w = 900;
+  const w = 600;
   const h = 500;
 
   const history = useNavigate();
@@ -37,6 +40,9 @@ function Dashboard() {
         setLoading(false);
       }
     });
+    fetch('http://localhost:8000/api/counter').then((response) => response.json()).then((data) => {setData(data)})
+    fetch('http://localhost:8000/api/female').then((response) => response.json()).then((data) => {setFemale(data)})
+    fetch('http://localhost:8000/api/male').then((response) => response.json()).then((data) => {setMale(data)})
   }, []);
 
   const deleteStudent = (e, id) => {
@@ -159,8 +165,18 @@ function Dashboard() {
           <button onClick={logout} >Log Out</button>
         </div>
         <br></br>
+        <br></br>
+        <div style={{ marginLeft: 40 }}>
+          <h6>Total Number of Students: {data}</h6>
+          <h6>Total Number of Female Students: {female}</h6>
+          <h6>Total Number of Male Students: {male}</h6>
+        </div>
+        
+        <br></br>
         <Chart2 data={data2} w={w} h={h} color="green" />
-        <LineChart/>
+        <div style={{ marginLeft: 800, marginTop: -450 }}>
+          <LineChart/>
+        </div>
         <hr></hr>
         <br></br>
         <h4 style={{ marginLeft: 50 }}>
@@ -209,7 +225,7 @@ function Dashboard() {
           </Link>
         </h4>
       </div>
-      <div className="card-body">
+      <div className="col-sm-6 offset-sm-3">
         <table className="table table-bordered table-striped">
           <thead>
             <tr>

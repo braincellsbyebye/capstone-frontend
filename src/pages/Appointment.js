@@ -1,5 +1,5 @@
-import React, {useState, useEffect, Component} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -48,35 +48,28 @@ class Appointment extends Component
 
         return(
             <div>
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className="card">
-                            <div className="card-header">
-                                <h4>Clinic Appointments <Link to={'/appindex'} className="btn btn-danger btn-sm float-end"> BACK</Link></h4>
-                            </div>
-                            <div className="card-body">
-                                
-                                <table className="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Apt Category</th>
-                                            <th>Apt Date</th>
-                                            <th>Apt Time</th>
-                                            <th>Apt Purpose</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {appointment_table}
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
+                <div className="container">
+                    <br/><br/>
+                    <div className="card-header">
+                        <h4>Clinic Appointments <Link to={'/appindex'} className="btn btn-danger btn-sm float-end"> BACK</Link></h4>
                     </div>
+                <div>
+                    <table className="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Apt Category</th>
+                                <th>Apt Date</th>
+                                <th>Apt Time</th>
+                                <th>Apt Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {appointment_table}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

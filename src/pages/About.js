@@ -1,6 +1,7 @@
-
+import './css/About.css';
 import {IconButton } from "@mui/material";
 import { Icon } from "@iconify/react";
+import { Link } from 'react-router-dom';
 
 
 function About() {
@@ -10,10 +11,12 @@ function About() {
 <>
 
 <div className='header-about'>
-    <IconButton sx= {{ color: 'white', marginLeft: 5, marginTop: 5}}>
+  <Link to="/userprofile">
+  <IconButton sx= {{ color: 'white', marginLeft: 5, marginTop: 5}}>
         <Icon icon="eva:arrow-ios-back-fill" />
-    </IconButton>  
-
+    </IconButton>
+  </Link>
+  
     <div className='about-header-title'>
         <text>About</text>
     </div>    

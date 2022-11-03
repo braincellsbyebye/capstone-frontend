@@ -113,7 +113,6 @@ function AddStudent() {
             <select type="text" name="sex" onChange={handleInput} value={studentInput.sex} className="form-control">
               <option value="Male">Male</option>
               <option value="Female">Female</option>
-              <option value="Prefer not to say">Prefer not to say</option>
             </select>
           </div>
           <div className="form-group mb-3">

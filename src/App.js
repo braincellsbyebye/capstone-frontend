@@ -27,6 +27,8 @@ import UserProfile from './pages/UserProfile.js';
 import About from './pages/About.js';
 import SearchStudent from './pages/Search.js';
 import LineChart from './pages/LineChart.js';
+import Policy from './pages/Policy.js';
+import MedicalRecords from './pages/MedicalRecords.js';
 
 
 function App() {
@@ -47,6 +49,9 @@ function App() {
             <Route path="/datavisual"element={<DataVisual/>} />
             <Route path="/dashboard" element={<Dashboard/>} />
             <Route path="/add-students" element={<AddStudent/>} />
+
+            <Route path="/policy" element={<Policy/>}/>
+            <Route path="/medicalrecords" element={<MedicalRecords/>}/>
 
             <Route path="/linechart" element={<LineChart />}/>
             <Route path="/dentalapp" element={<DentalAppointment/>} />
