@@ -27,6 +27,9 @@ function Navbar ()
                 <Link className="nav-link" to="/add-doctors">Add Doctor</Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/guardian">Guardian</Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/med">Med Cert Request</Link>
               </li>
               <li className="nav-item">

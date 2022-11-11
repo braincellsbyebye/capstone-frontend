@@ -1,6 +1,5 @@
 import React, {useState, useRef, useEffect } from 'react';
 import * as d3 from 'd3';
-import { margin} from '@mui/system';
 function LineChart(){
     const [data, setData] = useState([""]);
     const svgRef = useRef();
@@ -10,8 +9,8 @@ function LineChart(){
         fetch('http://localhost:8000/api/count').then((response) => response.json()).then((data) => {setData(data)})
         
 
-        const w = 500;
-        const h = 400;
+        const w = 400
+        const h = 100
         const svg = d3.select(svgRef.current)
             .attr('width', w)
             .attr('height', h)

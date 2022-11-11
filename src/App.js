@@ -29,6 +29,9 @@ import SearchStudent from './pages/Search.js';
 import LineChart from './pages/LineChart.js';
 import Policy from './pages/Policy.js';
 import MedicalRecords from './pages/MedicalRecords.js';
+import AddGuardian from './pages/AddGuardian.js';
+import Guardian from './pages/Guardian.js';
+import EditGuardian from './pages/EditGuardian.js';
 
 
 function App() {
@@ -49,6 +52,10 @@ function App() {
             <Route path="/datavisual"element={<DataVisual/>} />
             <Route path="/dashboard" element={<Dashboard/>} />
             <Route path="/add-students" element={<AddStudent/>} />
+
+            <Route path="/add-guardian" element={<AddGuardian/>} />
+            <Route path="/guardian" element={<Guardian/>} />
+            <Route path="/edit-guardian" element={<EditGuardian/>} />
 
             <Route path="/policy" element={<Policy/>}/>
             <Route path="/medicalrecords" element={<MedicalRecords/>}/>

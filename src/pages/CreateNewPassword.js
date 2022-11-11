@@ -1,6 +1,5 @@
 import React from "react";
 import { Typography, Box, IconButton } from "@mui/material";
-import CreateNewPasswordForm from "../components/CreateNewPasswordForm";
 import { Icon } from "@iconify/react";
 
 const CreateNewPassword = () => {
@@ -36,7 +35,6 @@ const CreateNewPassword = () => {
             Your New Password Must be Different from Previously used Password
           </Typography>
 
-          <CreateNewPasswordForm />
         </div>
       </div>
     </div>

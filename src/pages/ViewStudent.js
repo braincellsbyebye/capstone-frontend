@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
 import Navbar from "./Navbar";
-import Chart2 from '../Chart2';
 import LineChart from "./LineChart";
+import BCHART from "./BarChart";
 
 function Dashboard() {
   const [loading, setLoading] = useState(true);
@@ -13,10 +13,16 @@ function Dashboard() {
   const [data, setData] = useState('');
   const [female, setFemale] = useState('');
   const [male, setMale] = useState('');
-  
-  const data2 = [25,10,15,20,25,30,35,40]
-  const w = 600;
-  const h = 500;
+
+  const [rc, setRC] = useState('');
+  const [ba, setBA] = useState('');
+  const [ig, setIG] = useState('');
+  const [prr, setPRR] = useState('');
+
+  const [single, setSingle] = useState('');
+  const [mar, setMar] = useState('');
+  const [sep, setSep] = useState('');
+  const [pref, setPref] = useState('');
 
   const history = useNavigate();
   function logout()
@@ -43,6 +49,17 @@ function Dashboard() {
     fetch('http://localhost:8000/api/counter').then((response) => response.json()).then((data) => {setData(data)})
     fetch('http://localhost:8000/api/female').then((response) => response.json()).then((data) => {setFemale(data)})
     fetch('http://localhost:8000/api/male').then((response) => response.json()).then((data) => {setMale(data)})
+
+    fetch('http://localhost:8000/api/RC').then((response) => response.json()).then((data) => {setRC(data)})
+    fetch('http://localhost:8000/api/BA').then((response) => response.json()).then((data) => {setBA(data)})
+    fetch('http://localhost:8000/api/IG').then((response) => response.json()).then((data) => {setIG(data)})
+    fetch('http://localhost:8000/api/PRR').then((response) => response.json()).then((data) => {setPRR(data)})
+
+    fetch('http://localhost:8000/api/single').then((response) => response.json()).then((data) => {setSingle(data)})
+    fetch('http://localhost:8000/api/married').then((response) => response.json()).then((data) => {setMar(data)})
+    fetch('http://localhost:8000/api/sep').then((response) => response.json()).then((data) => {setSep(data)})
+    fetch('http://localhost:8000/api/pref').then((response) => response.json()).then((data) => {setPref(data)})
+
   }, []);
 
   const deleteStudent = (e, id) => {
@@ -79,6 +96,15 @@ function Dashboard() {
           <td>{item.address}</td>
           <td>{item.religion}</td>
           <td>{item.cvs}</td>
+          <td>
+            <Link
+              to={"/add-guardian"}
+              state={item}
+              className="btn btn-success btn-sm"
+            >
+              Add Guardian
+            </Link>
+          </td>
           <td>
             <Link
               to={"/edit"}
@@ -173,10 +199,27 @@ function Dashboard() {
         </div>
         <br></br>
         <br></br>
-        <Chart2 data={data2} w={w} h={h} color="green" />
-        <div style={{ marginLeft: 800, marginTop: -450 }}>
+        <div style={{ marginLeft: 100}}>
+          <BCHART />
+        </div>
+        <div style={{ marginLeft: 550, marginTop: -110 }}>
+          <h5>Legend:</h5>
+          <h6>Total Single: {single}</h6>
+          <h6>Total Married: {mar}</h6>
+          <h6>Total Seperated: {sep}</h6>
+          <h6>Total Prefer not to say: {pref}</h6>
+        </div>
+        <div style={{ marginLeft: 1000, marginTop: -180 }}>
           <LineChart/>
         </div>
+        <div style={{ marginLeft: 1500, marginTop: -120 }}>
+          <h5>Legend:</h5>
+          <h6>Total Roman Catholic: {rc}</h6>
+          <h6>Total Born Again: {ba}</h6>
+          <h6>Total Iglesia: {ig}</h6>
+          <h6>Total Prefer not to say: {prr}</h6>
+        </div>
+        <br></br>
         <hr></hr>
         <br></br>
         <h4 style={{ marginLeft: 50 }}>
@@ -190,7 +233,7 @@ function Dashboard() {
           </Link>
         </h4>
       </div>
-      <div className="col-sm-6 offset-sm-3">
+      <div>
         <table className="table table-bordered table-striped">
           <thead>
             <tr>
@@ -203,6 +246,7 @@ function Dashboard() {
               <th>Address</th>
               <th>Religion</th>
               <th>Civil Status</th>
+              <th>Add Guardian</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>

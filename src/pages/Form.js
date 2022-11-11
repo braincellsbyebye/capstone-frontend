@@ -1,6 +1,5 @@
 import React from "react";
 import { Typography, IconButton } from "@mui/material";
-import FormForm from "../components/FormForm";
 import { Icon } from "@iconify/react";
 
 const Form = () => {
@@ -17,7 +16,6 @@ const Form = () => {
           </Typography>
         </div>
 
-        <FormForm />
       </div>
     </div>
   );
