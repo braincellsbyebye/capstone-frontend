@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 function Guardian() {
   const [loading, setLoading] = useState(true);
   const [guardian, setGuardian] = useState([]);
+  const [table, setTable] = useState(null);
 
   const history = useNavigate();
   function logout()
@@ -40,6 +41,44 @@ function Guardian() {
       }
     });
   };
+
+  async function search(key) {
+    console.warn(key)
+    let result = await fetch("http://localhost:8000/api/search-guardian/"+key);
+    console.log(result);
+    result = await result.json();
+
+    var student_HTMLTABLE = result.map((item, index) => {
+      return (
+        <tr key={index}>
+          <td>{item.id}</td>
+          <td>{item.name}</td>
+          <td>{item.num}</td>
+          <td>{item.relts}</td>
+          <td>{item.student_id}</td>
+          <td>
+            <Link
+              to={"/edit-guardian"}
+              state={item}
+              className="btn btn-success btn-sm"
+            >
+              Edit
+            </Link>
+          </td>
+          <td>
+            <button
+              type="button"
+              onClick={(e) => deleteGuardian(e, item.id)}
+              className="btn btn-danger btn-sm"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      );
+    });
+    setTable(student_HTMLTABLE)
+}
 
   if (loading) {
     return <h4>Loading Guardian Data...</h4>;
@@ -106,6 +145,27 @@ function Guardian() {
           <tbody>{student_HTMLTABLE}</tbody>
         </table>
       </div>
+      <div className="col-sm-6 offset-sm-3">
+        <h4>Search Guardian by Student ID</h4>
+        <br/>
+        <input type='text' onChange={(e)=>search(e.target.value)} className="form-control" placeholder="Search Student" />
+      </div>
+      <div className="col-sm-6 offset-sm-3">
+          <table className="table table-bordered table-striped">
+          <thead>
+              <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Contact Number</th>
+              <th>Relation to Student</th>
+              <th>Student ID</th>
+              <th>Edit</th>
+              <th>Delete</th>
+              </tr>
+          </thead>
+          <tbody>{table}</tbody>
+          </table>
+    </div>
     </>
   );
 }

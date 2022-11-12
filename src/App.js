@@ -32,6 +32,8 @@ import MedicalRecords from './pages/MedicalRecords.js';
 import AddGuardian from './pages/AddGuardian.js';
 import Guardian from './pages/Guardian.js';
 import EditGuardian from './pages/EditGuardian.js';
+import EditAptClinic from './pages/EditApt.js';
+import EditAptDental from './pages/EditAptDental.js';
 
 
 function App() {
@@ -59,6 +61,8 @@ function App() {
 
             <Route path="/policy" element={<Policy/>}/>
             <Route path="/medicalrecords" element={<MedicalRecords/>}/>
+            <Route path="/edit-aptclinic" element={<EditAptClinic/>}/>
+            <Route path="/edit-aptdental" element={<EditAptDental/>}/>
 
             <Route path="/linechart" element={<LineChart />}/>
             <Route path="/dentalapp" element={<DentalAppointment/>} />

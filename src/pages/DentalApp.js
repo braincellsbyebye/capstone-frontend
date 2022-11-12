@@ -41,6 +41,16 @@ class DentalAppointment extends Component
                         <td>{item.aptdate}</td>
                         <td>{item.apttime}</td>
                         <td>{item.aptpurpose}</td>
+                        <td>{item.aptverify}</td>
+                        <td>
+                            <Link
+                            to={"/edit-aptdental"}
+                            state={item}
+                            className="btn btn-success btn-sm"
+                            >
+                            Verify
+                            </Link>
+                        </td>
                     </tr>
                 );
             } )
@@ -64,6 +74,7 @@ class DentalAppointment extends Component
                                 <th>Apt Date</th>
                                 <th>Apt Time</th>
                                 <th>Apt Purpose</th>
+                                <th>Verification</th>
                             </tr>
                         </thead>
                         <tbody>
