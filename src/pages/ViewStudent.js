@@ -98,6 +98,15 @@ function Dashboard() {
           <td>{item.cvs}</td>
           <td>
             <Link
+              to={"/add-medrec"}
+              state={item}
+              className="btn btn-success btn-sm"
+            >
+              Add Medical Record
+            </Link>
+          </td>
+          <td>
+            <Link
               to={"/add-guardian"}
               state={item}
               className="btn btn-success btn-sm"

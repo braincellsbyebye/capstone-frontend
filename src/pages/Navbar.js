@@ -21,13 +21,7 @@ function Navbar ()
                 <Link className="nav-link" to="/search">Search Student</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/add-students">Add Student</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/add-doctors">Add Doctor</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/guardian">Guardian</Link>
+                <Link className="nav-link" to="/guardian">Guardians</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/med">Med Cert Request</Link>
