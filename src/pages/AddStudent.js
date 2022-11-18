@@ -1,29 +1,65 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import swal from "sweetalert";
 import Navbar from "./Navbar";
 
 function AddStudent() {
   const history = useNavigate();
-  const [studentInput, setStudent] = useState({
+  const [fname, setFname]=useState("")
+  const [lname, setlname]=useState("")
+  const [bday, setbday]=useState("")
+  const [sex, setsex]=useState("")
+  const [course, setcourse]=useState("")
+  const [yrlvl, setyrlvl]=useState("")
+  const [phone, setphone]=useState("")
+  const [address, setaddress]=useState("")
+  const [religion, setreligion]=useState("")
+  const [cvs, setcvs]=useState("")
+  const [cbc, setcbc]=useState("")
+  const [uri, seturi]=useState("")
+
+  async function addstudent(){
+    const formData = new FormData();
+    formData.append('fname', fname);
+    formData.append('lname', lname);
+    formData.append('bday', bday);
+    formData.append('sex', sex);
+    formData.append('course', course);
+    formData.append('yrlvl', yrlvl);
+    formData.append('phone', phone);
+    formData.append('address', address);
+    formData.append('religion', religion);
+    formData.append('cvs', cvs);
+    formData.append('cbc', cbc);
+    formData.append('uri', uri);
+    let result = await fetch("http://localhost:8000/api/add-student", {
+      method: 'POST',
+      body: formData
+    });
+    console.log(result)
+    swal("Success!", "Student Added", "Successfully!")
+    history("/dashboard");
+  }
+  /*const [studentInput, setStudent] = useState({
     fname: "",
     lname: "",
     bday: "",
     sex: "",
+    course: "",
+    yrlvl: "",
     phone: "",
     address: "",
     religion: "",
     cvs: "",
     error_list: [],
-  });
+  });*/
 
-  const handleInput = (e) => {
+  /*const handleInput = (e) => {
     e.persist();
     setStudent({ ...studentInput, [e.target.name]: e.target.value });
-  };
+  };*/
 
-  const saveStudent = (e) => {
+  /*const saveStudent = (e) => {
     e.preventDefault();
 
     const data = {
@@ -31,6 +67,8 @@ function AddStudent() {
       lname: studentInput.lname,
       bday: studentInput.bday,
       sex: studentInput.sex,
+      course: studentInput.course,
+      yrlvl: studentInput.yrlvl,
       phone: studentInput.phone,
       address: studentInput.address,
       religion: studentInput.religion,
@@ -45,6 +83,8 @@ function AddStudent() {
           lname: "",
           bday: "",
           sex: "",
+          course: "",
+          yrlvl: "",
           phone: "",
           address: "",
           religion: "",
@@ -56,7 +96,7 @@ function AddStudent() {
         setStudent({ ...studentInput, error_list: res.data.validate_err });
       }
     });
-  };
+  };*/
 
   return (
     <>
@@ -71,18 +111,15 @@ function AddStudent() {
         </h4>
       </div>
       <div className="col-sm-6 offset-sm-3">
-        <form onSubmit={saveStudent}>
           <div className="form-group mb-3">
             <label>First Name</label>
             <input
               type="text"
               name="fname"
               style={{ height: 50 }}
-              onChange={handleInput}
-              value={studentInput.fname}
+              onChange={(e) => setFname(e.target.value)}
               className="form-control"
             />
-            <span className="text-danger">{studentInput.error_list.fname}</span>
           </div>
           <div className="form-group mb-3">
             <label>Last Name</label>
@@ -90,11 +127,9 @@ function AddStudent() {
               type="text"
               name="lname"
               style={{ height: 50 }}
-              onChange={handleInput}
-              value={studentInput.lname}
+              onChange={(e) => setlname(e.target.value)}
               className="form-control"
             />
-            <span className="text-danger">{studentInput.error_list.lname}</span>
           </div>
           <div className="form-group mb-3">
             <label>Birthdate</label>
@@ -102,15 +137,13 @@ function AddStudent() {
               type="date"
               name="bday"
               style={{ height: 50 }}
-              onChange={handleInput}
-              value={studentInput.bday}
+              onChange={(e) => setbday(e.target.value)}
               className="form-control"
             />
-            <span className="text-danger">{studentInput.error_list.bday}</span>
           </div>
           <div className="form-group mb-3">
             <label>Sex</label>
-            <select type="text" name="sex" onChange={handleInput} value={studentInput.sex} className="form-control">
+            <select type="text" name="sex" onChange={(e) => setsex(e.target.value)} className="form-control">
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>
@@ -121,11 +154,35 @@ function AddStudent() {
               type="text"
               name="phone"
               style={{ height: 50 }}
-              onChange={handleInput}
-              value={studentInput.phone}
+              onChange={(e) => setphone(e.target.value)}
               className="form-control"
             />
-            <span className="text-danger">{studentInput.error_list.phone}</span>
+          </div>
+          <div className="form-group mb-3">
+            <label>Course</label>
+            <select type="text" name="course" onChange={(e) => setcourse(e.target.value)} className="form-control">
+              <option value="Engineering">Engineering</option>
+              <option value="Maritime">Maritime</option>
+              <option value="Education">Education</option>
+              <option value="Nursing">Nursing</option>
+              <option value="Psychology">Psychology</option>
+              <option value="Architecture">Architecture</option>
+              <option value="Accountancy">Accountancy</option>
+              <option value="Arts and Science">Arts and Science</option>
+              <option value="Criminology">Criminology</option>
+              <option value="Computing and Multimedia Studies">Computing and Multimedia Studies</option>
+              <option value="Hospitality and Tourism Management">Hospitality and Tourism Management</option>
+            </select>
+          </div>
+          <div className="form-group mb-3">
+            <label>Year Level</label>
+            <select type="text" name="yrlvl" onChange={(e) => setyrlvl(e.target.value)} className="form-control">
+              <option value="1stYear">1st Year</option>
+              <option value="2ndYear">2nd Year</option>
+              <option value="3rdYear">3rd Year</option>
+              <option value="4thYear">4th Year</option>
+              <option value="5thYear">5th Year</option>
+            </select>
           </div>
           <div className="form-group mb-3">
             <label>Address</label>
@@ -133,21 +190,16 @@ function AddStudent() {
               type="text"
               name="address"
               style={{ height: 50 }}
-              onChange={handleInput}
-              value={studentInput.address}
+              onChange={(e) => setaddress(e.target.value)}
               className="form-control"
             />
-            <span className="text-danger">
-              {studentInput.error_list.address}
-            </span>
           </div>
           <div className="form-group mb-3">
             <label>Religion</label>
             <select
               type="text"
               name="religion"
-              onChange={handleInput}
-              value={studentInput.religion}
+              onChange={(e) => setreligion(e.target.value)}
               className="form-control"
             >
               <option value="RomanCatholic">Roman Catholic</option>
@@ -155,26 +207,29 @@ function AddStudent() {
               <option value="BornAgain">Born Again</option>
               <option value="Prefer not to say">Prefer not to say</option>
             </select>
-            <span className="text-danger">
-              {studentInput.error_list.cvs}
-            </span>
           </div>
           <div className="form-group mb-3">
             <label>Civil Status</label>
-            <select type="text"  name="cvs" onChange={handleInput}  value={studentInput.cvs} className="form-control">
+            <select type="text"  name="cvs" onChange={(e) => setcvs(e.target.value)} className="form-control">
               <option value="Single">Single</option>
               <option value="Married">Married</option>
               <option value="Seperated">Seperated</option>
               <option value="Prefer not to say">Prefer not to say</option>
             </select>
-            <span className="text-danger">{studentInput.error_list.cvs}</span>
           </div>
           <div className="form-group mb-3">
-            <button type="submit" className="btn btn-primary">
+            <label>CBC</label>
+            <input type="file" name="cbc" onChange={(e) => setcbc(e.target.files[0])} className="form-control" />
+          </div>
+          <div className="form-group mb-3">
+            <label>Urinalysis</label>
+            <input type="file" name="uri" onChange={(e) => seturi(e.target.files[0])} className="form-control" />
+          </div>
+          <div className="form-group mb-3">
+            <button type="submit" onClick={addstudent} className="btn btn-primary">
               Save Student
             </button>
           </div>
-        </form>
       </div>
     </>
   );

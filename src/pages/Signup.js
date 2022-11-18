@@ -8,25 +8,32 @@ const Signup = () => {
   const [name, setName]=useState("");
   const [password, setPassword]=useState("");
   const [email, setEmail]=useState("");
+  const [msg, setMsg]=useState("");
   const history = useNavigate();
 
   async function signup(){
     let item={name,password,email}
     console.warn(item)
     
-    let result = await fetch("http://localhost:8000/api/register",{
+    const regex = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
+    if (regex.test(item.email)) {
+      let result = await fetch("http://localhost:8000/api/register",{
       method:'POST',
       body:JSON.stringify(item),
       headers:{
         "Content-Type":'application/json',
         "Accept":'application/json',
       }
+      })
+      result = await result.json()
+      localStorage.setItem("user-info",JSON.stringify(result))
+      alert("User Created")
+      history("/login")
+    } else {
+      setMsg("Email is not valid")
+    }
 
-    })
-    result = await result.json()
-    localStorage.setItem("user-info",JSON.stringify(result))
-    alert("User Created")
-    history("/login")
+    
   }
 
   return (
@@ -53,6 +60,7 @@ const Signup = () => {
           <input type="text" style={{ height:50 }} value={name} onChange={(e) => setName(e.target.value)} className="form-control" placeholder="Username"/>
           <br />
           <input type="text" style={{ height:50 }} value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="Email"/>
+          {msg}
           <br />
           <input type="password" style={{ height:50 }} value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" placeholder="Password"/>
           <br />

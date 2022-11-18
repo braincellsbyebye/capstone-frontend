@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Typography, IconButton, Alert} from "@mui/material";
-import { Icon } from "@iconify/react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import './css/Login.css';
 
@@ -9,10 +7,19 @@ const Login = () => {
   const history = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [msg, setMsg] = useState("");
 
   async function login(){
     let item={email, password};
-    let result = await fetch("http://localhost:8000/api/login", {
+
+    const regex = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
+    if (regex.test(item.email)) {
+      if((item.email !== 'admin@gmail.com') || (item.password !== 'admin123')){
+        alert("Username or Password is not matched");
+      } else {
+        history("/dashboard")
+      }
+      /*let result = await fetch("http://localhost:8000/api/login", {
       method: "POST",
       headers:{
         "Content-Type": "application/json",
@@ -26,7 +33,12 @@ const Login = () => {
       alert("Login Credentials do not match")
     } else {
       history("/dashboard")
+    }*/
+    } else {
+      setMsg("Email is not valid")
     }
+
+    
 
 
   }
@@ -45,6 +57,7 @@ const Login = () => {
           <br></br>
           <text className="login"> LOGIN </text>
         <input type="text" style={{ height:50, marginTop: 25 }} placeholder="Email" onChange={(e) => setEmail(e.target.value)} className="form-control"/>
+        {msg}
         <br />
         <input type="password" style={{ height:50 }} onChange={(e) => setPassword(e.target.value)} placeholder="Password" className="form-control"/>
         <br />

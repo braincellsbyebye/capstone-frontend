@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 
 function UserProfile() {   
 
-  let user = JSON.parse(localStorage.getItem('user-info'))
-
   return (
 <>
 
@@ -18,10 +16,10 @@ function UserProfile() {
   </IconButton>  
 </Link>
 <div className='user-profile-name'>
-  <text>{user.name}</text>
+  <text>admin</text>
 </div>
   <div className='user-profile-email'>
-  <text>{user.email}</text>
+  <text>admin@gmail.com</text>
 </div>
   
 

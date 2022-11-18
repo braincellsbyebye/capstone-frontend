@@ -30,6 +30,8 @@ const Edit = ({userdata}) => {
             bday: studentInput.bday || state.bday,
             sex: studentInput.sex || state.sex,
             phone: studentInput.phone || state.phone,
+            course: studentInput.course || state.course,
+            yrlvl: studentInput.yrlvl || state.yrlvl,
             address: studentInput.address || state.address,
             religion: studentInput.religion || state.religion, 
             cvs: studentInput.cvs || state.cvs,
@@ -88,6 +90,28 @@ const Edit = ({userdata}) => {
                     <label>Phone</label>
                     <input type="text" style={{ height:50 }} name="phone" onChange={(e) => handleInput(e)} value={studentInput.phone}  className="form-control" />
                     <span className="text-danger">{errorInput.phone}</span>
+                </div>
+                <div className="form-group mb-3">
+                    <label>Course</label>
+                    <select type="text" name="course" onChange={(e) => handleInput(e)} value={studentInput.course} className="form-control">
+                        <option value="Engineering">Engineering</option>
+                        <option value="Maritime">Maritime</option>
+                        <option value="Education">Education</option>
+                        <option value="Nursing">Nursing</option>
+                        <option value="Psychology">Psychology</option>
+                        <option value="Architecture">Architecture</option>
+                        <option value="Accountancy">Accountancy</option>
+                    </select>
+                </div>
+                <div className="form-group mb-3">
+                    <label>Year Level</label>
+                    <select type="text" name="yrlvl" onChange={(e) => handleInput(e)} value={studentInput.yrlvl} className="form-control">
+                        <option value="1stYear">1st Year</option>
+                        <option value="2ndYear">2nd Year</option>
+                        <option value="3rdYear">3rd Year</option>
+                        <option value="4thYear">4th Year</option>
+                        <option value="5thYear">5th Year</option>
+                    </select>
                 </div>
                 <div className="form-group mb-3">
                     <label>Address</label>
