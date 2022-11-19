@@ -11,8 +11,6 @@ const Edit = ({userdata}) => {
     const [errorInput, setError] = useState([]);
     const state = location.state;
     const [studentInput, setStudent] = useState(state);
-    
-    const student_id = state.id;
 
     const handleInput = (e) => {
         e.persist();
@@ -59,7 +57,7 @@ const Edit = ({userdata}) => {
         <>
         <Navbar />
         <div className="col-sm-6 offset-sm-3">
-            <h4>Edit Students {student_id}
+            <h4>Edit Students
                 <Link to={'/dashboard'} className="btn btn-danger btn-sm float-end"> BACK</Link>
              </h4>
             <form onSubmit={(e) => updateStudent(e)} >

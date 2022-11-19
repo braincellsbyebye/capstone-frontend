@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import swal from "sweetalert";
 import Navbar from "./Navbar";
 
 function Guardian() {
@@ -9,12 +8,6 @@ function Guardian() {
   const [guardian, setGuardian] = useState([]);
   const [table, setTable] = useState(null);
 
-  const history = useNavigate();
-  function logout()
-  {
-    localStorage.clear();
-    history("/login")
-  }
 
   useEffect(() => {
     axios.get(`/api/guardian`).then((res) => {
@@ -24,23 +17,6 @@ function Guardian() {
       }
     });
   }, []);
-
-  const deleteGuardian = (e, id) => {
-    e.preventDefault();
-
-    const thisClicked = e.currentTarget;
-    thisClicked.innerText = "Deleting";
-
-    axios.delete(`/api/delete-guardian/${id}`).then((res) => {
-      if (res.data.status === 200) {
-        swal("Deleted!", res.data.message, "success");
-        thisClicked.closest("tr").remove();
-      } else if (res.data.status === 404) {
-        swal("Error", res.data.message, "error");
-        thisClicked.innerText = "Delete";
-      }
-    });
-  };
 
   async function search(key) {
     console.warn(key)
@@ -64,15 +40,6 @@ function Guardian() {
             >
               Edit
             </Link>
-          </td>
-          <td>
-            <button
-              type="button"
-              onClick={(e) => deleteGuardian(e, item.id)}
-              className="btn btn-danger btn-sm"
-            >
-              Delete
-            </button>
           </td>
         </tr>
       );
@@ -102,15 +69,6 @@ function Guardian() {
               Edit
             </Link>
           </td>
-          <td>
-            <button
-              type="button"
-              onClick={(e) => deleteGuardian(e, item.id)}
-              className="btn btn-danger btn-sm"
-            >
-              Delete
-            </button>
-          </td>
         </tr>
       );
     });
@@ -119,35 +77,9 @@ function Guardian() {
   return (
     <>
       <Navbar />
-      <div>
-        <div style={{ marginLeft: 20 }}>
-          <button onClick={logout} >Log Out</button>
-        </div>
-        <hr></hr>
+      <div className="col-sm-6 offset-sm-3">
+        <h3>Search Contact by Student ID</h3>
         <br></br>
-      </div>
-      <div className="col-sm-6 offset-sm-3">
-        <h4 style={{ marginLeft: 50 }}>
-          Guardian Data
-        </h4>
-        <table className="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Contact Number</th>
-              <th>Relation to Student</th>
-              <th>Student ID</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>{student_HTMLTABLE}</tbody>
-        </table>
-      </div>
-      <div className="col-sm-6 offset-sm-3">
-        <h4>Search Guardian by Student ID</h4>
-        <br/>
         <input type='text' onChange={(e)=>search(e.target.value)} className="form-control" placeholder="Search Student" />
       </div>
       <div className="col-sm-6 offset-sm-3">
@@ -160,12 +92,37 @@ function Guardian() {
               <th>Relation to Student</th>
               <th>Student ID</th>
               <th>Edit</th>
-              <th>Delete</th>
               </tr>
           </thead>
           <tbody>{table}</tbody>
           </table>
     </div>
+    <div>
+      </div>
+      <div className="col-sm-6 offset-sm-3">
+        <h3 style={{ marginLeft: 5, marginTop:50 }}>
+          Contact Person
+        </h3>
+        <br></br>
+        <br>
+        </br>
+        <table className="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Contact Number</th>
+              <th>Relation to Student</th>
+              <th>Student ID</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>{student_HTMLTABLE}</tbody>
+          <br></br>
+          <br></br>
+          <br></br>
+        </table>
+      </div>
     </>
   );
 }

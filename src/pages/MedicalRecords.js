@@ -23,9 +23,6 @@ function MedicalRecords() {
         <div className='list-medical'>
           <ol style={{ listStyle: 'none'}}>
             <li className='cbc'> Complete Blood Count (CBC)</li>
-            <li className='xray'> X-Ray</li>
-            <li className='hepa'> Hepa B Screening</li>
-            <li className='ecg'> ElectroCardiogram (ECG)</li>
             <li className='urin'> Urinalysis</li>     
           </ol>
         </div>

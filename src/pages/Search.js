@@ -1,8 +1,6 @@
 import Navbar from "./Navbar";
 import { useState } from "react";
 import { Link } from 'react-router-dom';
-import axios from "axios";
-import swal from "sweetalert";
 
 function SearchStudent() {
 
@@ -23,6 +21,8 @@ function SearchStudent() {
               <td>{item.bday}</td>
               <td>{item.sex}</td>
               <td>{item.phone}</td>
+              <td>{item.course}</td>
+              <td>{item.yrlvl}</td>
               <td>{item.address}</td>
               <td>{item.religion}</td>
               <td>{item.cvs}</td>
@@ -35,15 +35,6 @@ function SearchStudent() {
                   Edit
                 </Link>
               </td>
-              <td>
-                <button
-                  type="button"
-                  onClick={(e) => deleteStudent(e, item.id)}
-                  className="btn btn-danger btn-sm"
-                >
-                  Delete
-                </button>
-              </td>
             </tr>
           );
         });
@@ -51,28 +42,11 @@ function SearchStudent() {
 
     }
 
-        const deleteStudent = (e, id) => {
-            e.preventDefault();
-        
-            const thisClicked = e.currentTarget;
-            thisClicked.innerText = "Deleting";
-        
-            axios.delete(`/api/delete-student/${id}`).then((res) => {
-              if (res.data.status === 200) {
-                swal("Deleted!", res.data.message, "success");
-                thisClicked.closest("tr").remove();
-              } else if (res.data.status === 404) {
-                swal("Error", res.data.message, "error");
-                thisClicked.innerText = "Delete";
-              }
-            });
-          };
-
     return (
         <div>
             <Navbar />
             <div className="col-sm-6 offset-sm-3">
-                <h1>Search Student</h1>
+                <h1>Search Student by ID</h1>
                 <br/>
                 <input type='text' onChange={(e)=>search(e.target.value)} className="form-control" placeholder="Search Student" />
             </div>
@@ -86,11 +60,12 @@ function SearchStudent() {
                     <th>Birthdate</th>
                     <th>Sex</th>
                     <th>Phone</th>
+                    <th>Course</th>
+                    <th>Year Level</th>
                     <th>Address</th>
                     <th>Religion</th>
                     <th>Civil Status</th>
                     <th>Edit</th>
-                    <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>{table}</tbody>

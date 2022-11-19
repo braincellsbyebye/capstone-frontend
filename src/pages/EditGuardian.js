@@ -52,7 +52,7 @@ const EditGuardian = ({userdata}) => {
         <>
         <Navbar />
         <div className="col-sm-6 offset-sm-3">
-            <h4>Edit Guardian
+            <h4>Edit Contact Person
                 <Link to={'/guardian'} className="btn btn-danger btn-sm float-end"> BACK</Link>
              </h4>
             <form onSubmit={(e) => updateStudent(e)} >

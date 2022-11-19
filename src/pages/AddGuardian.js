@@ -57,7 +57,7 @@ function AddGuardian() {
         <Navbar />
         <div className="col-sm-6 offset-sm-3">
         <h4>
-            Add Guardian
+            Add Contact Person
             <Link to={"/dashboard"} className="btn btn-danger btn-sm float-end">
             {" "}
             BACK

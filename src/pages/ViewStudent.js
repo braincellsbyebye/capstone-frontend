@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import swal from "sweetalert";
 import Navbar from "./Navbar";
 import LineChart from "./LineChart";
 import BCHART from "./BarChart";
@@ -87,7 +86,7 @@ function Dashboard() {
               state={item}
               className="btn btn-success btn-sm"
             >
-              Add Medical Record
+              Add
             </Link>
           </td>
           <td>
@@ -96,7 +95,7 @@ function Dashboard() {
               state={item}
               className="btn btn-success btn-sm"
             >
-              Add Guardian
+              Add
             </Link>
           </td>
           <td>
@@ -112,23 +111,6 @@ function Dashboard() {
       );
     });
   }
-
-  const deleteDoctor = (e, id) => {
-    e.preventDefault();
-
-    const thisClicked = e.currentTarget;
-    thisClicked.innerText = "Deleting";
-
-    axios.delete(`/api/delete-doctor/${id}`).then((res) => {
-      if (res.data.status === 200) {
-        swal("Deleted!", res.data.message, "success");
-        thisClicked.closest("tr").remove();
-      } else if (res.data.status === 404) {
-        swal("Error", res.data.message, "error");
-        thisClicked.innerText = "Delete";
-      }
-    });
-  };
 
   if (loading) {
     return <h4>Loading Doctor Data...</h4>;
@@ -149,15 +131,6 @@ function Dashboard() {
             >
               Edit
             </Link>
-          </td>
-          <td>
-            <button
-              type="button"
-              onClick={(e) => deleteDoctor(e, doctor.id)}
-              className="btn btn-danger btn-sm"
-            >
-              Delete
-            </button>
           </td>
         </tr>
       );
@@ -236,7 +209,7 @@ function Dashboard() {
               <th>CBC Image</th>
               <th>Urinalysis Image</th>
               <th>Add Medical Record</th>
-              <th>Add Guardian</th>
+              <th>Add Contact Person</th>
               <th>Edit</th>
             </tr>
           </thead>
@@ -266,7 +239,6 @@ function Dashboard() {
               <th>Doctor Name</th>
               <th>Doctor Position</th>
               <th>Edit</th>
-              <th>Delete</th>
             </tr>
           </thead>
           <tbody>{doctor_TABLE}</tbody>
@@ -275,9 +247,6 @@ function Dashboard() {
       <br></br>
       <hr></hr>
       <br></br>
-      <div style={{ marginLeft: 50 }}>
-        <h4>Announcements</h4>
-      </div>
     </>
   );
 }

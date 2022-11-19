@@ -7,23 +7,35 @@ function UserProfile() {
 
   return (
 <>
+<div className="pb-10">
+        <nav className="navbar navbar-expand-lg text-dark bg-primary bg-gradient">
+        <div className="container">
+        <Link to="/dashboard">
+        <IconButton sx= {{ color: 'white', marginLeft: -15, marginTop: 2}}>
+          <Icon icon="eva:arrow-ios-back-fill" />
+        </IconButton>  
+      </Link>
 
 
-<div className='user-header'>   
-<Link to="/dashboard">
-  <IconButton sx= {{ color: 'white', marginLeft: 5, marginTop: 4}}>
-    <Icon icon="eva:arrow-ios-back-fill" />
-  </IconButton>  
-</Link>
-<div className='user-profile-name'>
-  <text>admin</text>
-</div>
-  <div className='user-profile-email'>
-  <text>admin@gmail.com</text>
-</div>
-  
 
-</div>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+              <div className='user-profile-name'>
+                <text>admin</text>
+              </div>
+                <div className='user-profile-email'>
+                <text>admin@gmail.com</text>
+              </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
 
 <div className='title-section'>
     <text class="content-name">CONTENT</text>
