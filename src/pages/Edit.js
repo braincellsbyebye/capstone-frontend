@@ -73,7 +73,7 @@ const Edit = ({userdata}) => {
                 </div>
                 <div className="form-group mb-3">
                     <label>Birthdate</label>
-                    <input type="text" style={{ height:50 }} name="bday" onChange={(e) => handleInput(e)} value={studentInput.bday}  className="form-control" readOnly/>
+                    <input type="text" style={{ height:50 }} name="bday" onChange={(e) => handleInput(e)} value={studentInput.bday}  className="form-control" disabled/>
                     <span className="text-danger">{errorInput.bday}</span>
                 </div>
                 <div className="form-group mb-3">

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useLocation } from 'react-router';
-import axios from "axios";
-import Navbar from "./Navbar";
 
 function AddMedicalRecord() {
     const location = useLocation();
@@ -16,7 +14,6 @@ function AddMedicalRecord() {
 
 
     let x = state.id;
-    console.log(x)
 
     const [studentInput, setStudent] = useState({
     cbc: "",
@@ -134,7 +131,7 @@ function AddMedicalRecord() {
                     </div>
                     <div className="form-group mb-3">
                         <label>Student ID</label>
-                        <input type="text" style={{ height: 50 }} name="student_id" onChange={handleInput} value={x} className="form-control" readOnly />
+                        <input type="text" style={{ height: 50 }} name="student_id" onChange={handleInput} value={x} className="form-control" disabled />
                     </div>
                     <div className="form-group mb-3">
                         <button type="submit" className="btn btn-primary">

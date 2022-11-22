@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import swal from "sweetalert";
 import Navbar from "./Navbar";
 
 function MedCert() {
@@ -17,6 +18,23 @@ function MedCert() {
     });
   }, []);
 
+  const deleteMedCert = (e, id) => {
+    e.preventDefault();
+
+    const thisClicked = e.currentTarget;
+    thisClicked.innerText = "Deleting";
+
+    axios.delete(`/api/delete-medcert/${id}`).then((res) => {
+      if (res.data.status === 200) {
+        swal("Deleted!", res.data.message, "success");
+        thisClicked.closest("tr").remove();
+      } else if (res.data.status === 404) {
+        swal("Error", res.data.message, "error");
+        thisClicked.innerText = "Delete";
+      }
+    });
+  };
+
 
   if (loading) {
     return <h4>Loading Med Cert Data...</h4>;
@@ -30,6 +48,7 @@ function MedCert() {
           <td>{item.fname}</td>
           <td>{item.lname}</td>
           <td>{item.verdict}</td>
+          <td>{item.doctor}</td>
           <td>{item.uid}</td>
           <td>
             <Link
@@ -39,6 +58,15 @@ function MedCert() {
             >
               Verify
             </Link>
+          </td>
+          <td>
+            <button
+              type="button"
+              onClick={(e) => deleteMedCert(e, item.id)}
+              className="btn btn-danger btn-sm"
+            >
+              Delete
+            </button>
           </td>
         </tr>
       );
@@ -66,8 +94,10 @@ function MedCert() {
               <th>First Name</th>
               <th>Last Name</th>
               <th>Decision</th>
+              <th>Doctor in Charge</th>
               <th>User ID</th>
               <th>Verification</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>{student_HTMLTABLE}</tbody>

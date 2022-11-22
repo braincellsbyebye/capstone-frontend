@@ -1,4 +1,5 @@
 import React, {useState, useRef, useEffect } from 'react';
+import axios from "axios";
 import * as d3 from 'd3';
 function LineChart(){
     const [data, setData] = useState([""]);
@@ -6,10 +7,14 @@ function LineChart(){
 
     useEffect(() => {
         
-        fetch('http://localhost:8000/api/count').then((response) => response.json()).then((data) => {setData(data)})
-        
+        axios.get(`/api/count`).then((res) => {
+            if (res.status === 200) {
+              setData(res.data.all);
+            }
+          });
+    },[]);
 
-        const w = 400
+    const w = 400
         const h = 100
         const svg = d3.select(svgRef.current)
             .attr('width', w)
@@ -52,7 +57,6 @@ function LineChart(){
             .attr('fill', 'none')
             .attr('stroke', 'black')
 
-    },[data]);
 
     return (
         <div>

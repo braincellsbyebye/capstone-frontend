@@ -104,7 +104,7 @@ function AddGuardian() {
             </div>
             <div className="form-group mb-3">
             <label>Student ID</label>
-            <input type="text" name="student_id" onChange={handleInput} value={studentInput.student_id} className="form-control" readOnly/>
+            <input type="text" name="student_id" onChange={handleInput} value={studentInput.student_id} className="form-control" disabled/>
             </div>
             <div className="form-group mb-3">
             <button type="submit" className="btn btn-primary">

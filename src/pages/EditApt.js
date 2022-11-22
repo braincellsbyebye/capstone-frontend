@@ -62,32 +62,32 @@ const EditAptClinic = ({userdata}) => {
             <form onSubmit={(e) => updateStudent(e)} >
                 <div className="form-group mb-3">
                     <label>First Name</label>
-                    <input style={{ height:50 }} type="text" name="fname" onChange={(e) => handleInput(e)} value={studentInput.fname} className="form-control" readOnly/>
+                    <input style={{ height:50 }} type="text" name="fname" onChange={(e) => handleInput(e)} value={studentInput.fname} className="form-control" disabled/>
                     <span className="text-danger">{errorInput.fname}</span>
                 </div>
                 <div className="form-group mb-3">
                     <label>Last Name</label>
-                    <input style={{ height:50 }} type="text" name="lname" onChange={(e) => handleInput(e)} value={studentInput.lname} className="form-control" readOnly/>
+                    <input style={{ height:50 }} type="text" name="lname" onChange={(e) => handleInput(e)} value={studentInput.lname} className="form-control" disabled/>
                     <span className="text-danger">{errorInput.lname}</span>
                 </div>
                 <div className="form-group mb-3">
                     <label>Appointment Category</label>
-                    <input type="text" style={{ height:50 }} name="aptcategory" onChange={(e) => handleInput(e)} value={studentInput.aptcategory}  className="form-control" readOnly/>
+                    <input type="text" style={{ height:50 }} name="aptcategory" onChange={(e) => handleInput(e)} value={studentInput.aptcategory}  className="form-control" disabled/>
                     <span className="text-danger">{errorInput.aptcategory}</span>
                 </div>
                 <div className="form-group mb-3">
                     <label>Appointment Date</label>
-                    <input type="text" style={{ height:50 }} name="aptdate" onChange={(e) => handleInput(e)} value={studentInput.aptdate}  className="form-control" readOnly/>
+                    <input type="text" style={{ height:50 }} name="aptdate" onChange={(e) => handleInput(e)} value={studentInput.aptdate}  className="form-control" disabled/>
                     <span className="text-danger">{errorInput.aptdate}</span>
                 </div>
                 <div className="form-group mb-3">
                     <label>Appointment Time</label>
-                    <input type="text" style={{ height:50 }} name="apttime" onChange={(e) => handleInput(e)} value={studentInput.apttime}  className="form-control" readOnly/>
+                    <input type="text" style={{ height:50 }} name="apttime" onChange={(e) => handleInput(e)} value={studentInput.apttime}  className="form-control" disabled/>
                     <span className="text-danger">{errorInput.apttime}</span>
                 </div>
                 <div className="form-group mb-3">
                     <label>Appointment Purpose</label>
-                    <input type="text" style={{ height:50 }} name="aptpurpose" onChange={(e) => handleInput(e)} value={studentInput.aptpurpose}  className="form-control" readOnly/>
+                    <input type="text" style={{ height:50 }} name="aptpurpose" onChange={(e) => handleInput(e)} value={studentInput.aptpurpose}  className="form-control" disabled/>
                     <span className="text-danger">{errorInput.aptpurpose}</span>
                 </div>
                 <div className="form-group mb-3">
@@ -101,7 +101,7 @@ const EditAptClinic = ({userdata}) => {
                 </div>
                 <div className="form-group mb-3">
                     <label>User ID</label>
-                    <input type="text" style={{ height:50 }} name="user_id" onChange={(e) => handleInput(e)} value={studentInput.user_id}  className="form-control" readOnly/>
+                    <input type="text" style={{ height:50 }} name="user_id" onChange={(e) => handleInput(e)} value={studentInput.user_id}  className="form-control" disabled/>
                     <span className="text-danger">{errorInput.user_id}</span>
                 </div>
                 <div className="form-group mb-3">

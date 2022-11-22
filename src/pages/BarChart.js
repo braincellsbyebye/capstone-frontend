@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import axios from "axios";
 import * as d3 from 'd3';
 
 function BCHART() {
@@ -7,9 +8,13 @@ function BCHART() {
 
     useEffect(() => {
 
-        fetch('http://localhost:8000/api/cvs').then((response) => response.json()).then((data) => {setData(data)})
-
-        const w = 400
+        axios.get(`/api/cvs`).then((res) => {
+            if (res.status === 200) {
+              setData(res.data.all);
+            }
+          });
+    }, [])
+    const w = 400
         const h = 100
 
         const svg = d3.select(svgRef.current)
@@ -45,8 +50,6 @@ function BCHART() {
                 .attr('y', yScale)
                 .attr('width', xScale.bandwidth())
                 .attr('height', val => h - yScale(val));
-
-    }, [data])
     return(
         <div>
             <svg ref={svgRef}></svg>

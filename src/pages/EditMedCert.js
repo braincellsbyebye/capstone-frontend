@@ -27,6 +27,7 @@ const EditMedCert = ({userdata}) => {
             fname: MedInput.fname || state.fname,
             lname: MedInput.lname || state.lname,
             verdict: MedInput.verdict || state.verdict,
+            doctor: MedInput.doctor || state.doctor,
             uid: MedInput.uid || state.uid,
         }
         axios.put(`/api/update-medcert/${med_id}`, data).then(res=>{
@@ -58,12 +59,12 @@ const EditMedCert = ({userdata}) => {
             <form onSubmit={(e) => updateMedCert(e)} >
                 <div className="form-group mb-3">
                     <label>First Name</label>
-                    <input style={{ height:50 }} type="text" name="fname" onChange={(e) => handleInput(e)} value={MedInput.fname} className="form-control" readOnly/>
+                    <input style={{ height:50 }} type="text" name="fname" onChange={(e) => handleInput(e)} value={MedInput.fname} className="form-control" disabled/>
                     <span className="text-danger">{errorInput.fname}</span>
                 </div>
                 <div className="form-group mb-3">
                     <label>Last Name</label>
-                    <input type="text" style={{ height:50 }} name="lname" onChange={(e) => handleInput(e)} value={MedInput.lname}  className="form-control" readOnly/>
+                    <input type="text" style={{ height:50 }} name="lname" onChange={(e) => handleInput(e)} value={MedInput.lname}  className="form-control" disabled/>
                     <span className="text-danger">{errorInput.lname}</span>
                 </div>
                 <div className="form-group mb-3">
@@ -76,8 +77,17 @@ const EditMedCert = ({userdata}) => {
                     <span className="text-danger">{errorInput.verdict}</span>
                 </div>
                 <div className="form-group mb-3">
+                    <label>Doctor in Charge</label>
+                    <select type="text"  name="doctor" onChange={(e) => handleInput(e)}  value={MedInput.doctor} className="form-control">
+                        <option value="TBA">TBA</option>
+                        <option value="Dr. Elizabeth Jones">Dr. Elizabeth Jones</option>
+                        <option value="Dr. Michael Folly">Dr. Michael Folly</option>
+                    </select>
+                    <span className="text-danger">{errorInput.doctor}</span>
+                </div>
+                <div className="form-group mb-3">
                     <label>User ID</label>
-                    <input type="text" style={{ height:50 }} name="uid" onChange={(e) => handleInput(e)} value={MedInput.uid}  className="form-control" readOnly/>
+                    <input type="text" style={{ height:50 }} name="uid" onChange={(e) => handleInput(e)} value={MedInput.uid}  className="form-control" disabled/>
                     <span className="text-danger">{errorInput.uid}</span>
                 </div>
                 <div className="form-group mb-3">

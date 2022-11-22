@@ -73,7 +73,7 @@ const EditGuardian = ({userdata}) => {
                 </div>
                 <div className="form-group mb-3">
                     <label>Student ID</label>
-                    <input type="text" style={{ height:50 }} name="student_id" onChange={(e) => handleInput(e)} value={studentInput.student_id} className="form-control" readOnly/>
+                    <input type="text" style={{ height:50 }} name="student_id" onChange={(e) => handleInput(e)} value={studentInput.student_id} className="form-control" disabled/>
                 </div>
                 <div className="form-group mb-3">
                     <button type="submit" id="updatebtn" className="btn btn-primary">Update Guardian</button>

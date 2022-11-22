@@ -43,20 +43,72 @@ function Dashboard() {
         setLoading(false);
       }
     });
-    fetch('http://localhost:8000/api/counter').then((response) => response.json()).then((data) => {setData(data)})
-    fetch('http://localhost:8000/api/female').then((response) => response.json()).then((data) => {setFemale(data)})
-    fetch('http://localhost:8000/api/male').then((response) => response.json()).then((data) => {setMale(data)})
-
-    fetch('http://localhost:8000/api/RC').then((response) => response.json()).then((data) => {setRC(data)})
-    fetch('http://localhost:8000/api/BA').then((response) => response.json()).then((data) => {setBA(data)})
-    fetch('http://localhost:8000/api/IG').then((response) => response.json()).then((data) => {setIG(data)})
-    fetch('http://localhost:8000/api/PRR').then((response) => response.json()).then((data) => {setPRR(data)})
-
-    fetch('http://localhost:8000/api/single').then((response) => response.json()).then((data) => {setSingle(data)})
-    fetch('http://localhost:8000/api/married').then((response) => response.json()).then((data) => {setMar(data)})
-    fetch('http://localhost:8000/api/sep').then((response) => response.json()).then((data) => {setSep(data)})
-    fetch('http://localhost:8000/api/pref').then((response) => response.json()).then((data) => {setPref(data)})
-
+    axios.get('/api/counter').then(response => {
+      if(response.status === 200)
+      {
+          setData(response.data.all)
+      }
+    });
+    axios.get('/api/female').then(response => {
+      if(response.status === 200)
+      {
+          setFemale(response.data.all)
+      }
+    });
+    axios.get('/api/male').then(response => {
+      if(response.status === 200)
+      {
+          setMale(response.data.all)
+      }
+    });
+    axios.get('/api/RC').then(response => {
+      if(response.status === 200)
+      {
+          setRC(response.data.all)
+      }
+    });
+    axios.get('/api/BA').then(response => {
+      if(response.status === 200)
+      {
+          setBA(response.data.all)
+      }
+    });
+    axios.get('/api/IG').then(response => {
+      if(response.status === 200)
+      {
+          setIG(response.data.all)
+      }
+    });
+    axios.get('/api/PRR').then(response => {
+      if(response.status === 200)
+      {
+          setPRR(response.data.all)
+      }
+    });
+    axios.get('/api/single').then(response => {
+      if(response.status === 200)
+      {
+          setSingle(response.data.all)
+      }
+    });
+    axios.get('/api/married').then(response => {
+      if(response.status === 200)
+      {
+          setMar(response.data.all)
+      }
+    });
+    axios.get('/api/sep').then(response => {
+      if(response.status === 200)
+      {
+          setSep(response.data.all)
+      }
+    });
+    axios.get('/api/pref').then(response => {
+      if(response.status === 200)
+      {
+          setPref(response.data.all)
+      }
+    });
   }, []);
 
   if (loading) {
