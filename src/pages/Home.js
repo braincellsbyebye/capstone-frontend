@@ -6,13 +6,13 @@ const Home = () => {
   function logout()
   {
     localStorage.clear();
-    history("/login")
+    history("/")
   }
-
+  let user = JSON.parse(localStorage.getItem('user-info'))
   return (
     <div>
-      <h5>admin</h5>
-      <h6>admin@gmail.com</h6>
+      <h5>{user.name}</h5>
+      <h6>{user.email}</h6>
       <button onClick={logout} >Log Out</button>
     </div>
   );

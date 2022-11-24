@@ -8,11 +8,12 @@ const Signup = () => {
   const [name, setName]=useState("");
   const [password, setPassword]=useState("");
   const [email, setEmail]=useState("");
+  const [verified, setVerified] = useState("false");
   const [msg, setMsg]=useState("");
   const history = useNavigate();
 
   async function signup(){
-    let item={name,password,email}
+    let item={name,password,email, verified}
     console.warn(item)
     
     const regex = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
@@ -28,7 +29,7 @@ const Signup = () => {
       result = await result.json()
       localStorage.setItem("user-info",JSON.stringify(result))
       alert("User Created")
-      history("/login")
+      history("/")
     } else {
       setMsg("Email is not valid")
     }

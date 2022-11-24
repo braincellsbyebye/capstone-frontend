@@ -4,12 +4,14 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import LineChart from "./LineChart";
 import BCHART from "./BarChart";
+import YRBChart from "./BChartYrlvl";
 
 function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [students, setStudents] = useState([]);
   const [doctors, setDoctors] = useState([]);
   const [data, setData] = useState('');
+
   const [female, setFemale] = useState('');
   const [male, setMale] = useState('');
 
@@ -23,12 +25,20 @@ function Dashboard() {
   const [sep, setSep] = useState('');
   const [pref, setPref] = useState('');
 
+  const [first, setFirst] = useState('');
+  const [second, setSecond] = useState('');
+  const [third, setThird] = useState('');
+  const [fourth, setFourth] = useState('');
+  const [fifth, setFifth] = useState('');
+
   const history = useNavigate();
   function logout()
   {
     localStorage.clear();
-    history("/login")
+    history("/")
   }
+
+  let user = JSON.parse(localStorage.getItem('user-info'))
 
   useEffect(() => {
     axios.get(`/api/students`).then((res) => {
@@ -107,6 +117,36 @@ function Dashboard() {
       if(response.status === 200)
       {
           setPref(response.data.all)
+      }
+    });
+    axios.get('/api/first').then(response => {
+      if(response.status === 200)
+      {
+          setFirst(response.data.all)
+      }
+    });
+    axios.get('/api/second').then(response => {
+      if(response.status === 200)
+      {
+          setSecond(response.data.all)
+      }
+    });
+    axios.get('/api/third').then(response => {
+      if(response.status === 200)
+      {
+          setThird(response.data.all)
+      }
+    });
+    axios.get('/api/fourth').then(response => {
+      if(response.status === 200)
+      {
+          setFourth(response.data.all)
+      }
+    });
+    axios.get('/api/fifth').then(response => {
+      if(response.status === 200)
+      {
+          setFifth(response.data.all)
       }
     });
   }, []);
@@ -188,6 +228,7 @@ function Dashboard() {
       );
     });
   }
+  
 
   return (
     <>
@@ -195,9 +236,9 @@ function Dashboard() {
       <div>
         <div style={{ marginLeft: 20 }}>
           <Link to='/userprofile'>
-            <h5>admin</h5>
+            <h5>{user.name}</h5>
           </Link>
-          <h6>admin@gmail.com</h6>
+          <h6>{user.email}</h6>
           <button onClick={logout} >Log Out</button>
         </div>
         <br></br>
@@ -210,6 +251,7 @@ function Dashboard() {
         <br></br>
         <br></br>
         <div style={{ marginLeft: 100}}>
+          <h4>Civil Status Chart</h4>
           <BCHART />
         </div>
         <div style={{ marginLeft: 550, marginTop: -110 }}>
@@ -220,6 +262,7 @@ function Dashboard() {
           <h6>Total Prefer not to say: {pref}</h6>
         </div>
         <div style={{ marginLeft: 1000, marginTop: -180 }}>
+          <h4>Religion Chart</h4>
           <LineChart/>
         </div>
         <div style={{ marginLeft: 1500, marginTop: -120 }}>
@@ -228,6 +271,18 @@ function Dashboard() {
           <h6>Total Born Again: {ba}</h6>
           <h6>Total Iglesia: {ig}</h6>
           <h6>Total Prefer not to say: {prr}</h6>
+        </div>
+        <div style={{ marginLeft: 100}}>
+          <h4>Year Level Chart</h4>
+          <YRBChart/>
+        </div>
+        <div style={{ marginLeft: 550, marginTop: -110 }}>
+          <h5>Legend:</h5>
+          <h6>Total First Year: {first}</h6>
+          <h6>Total Second Year: {second}</h6>
+          <h6>Total Third Year: {third}</h6>
+          <h6>Total Fourth Year: {fourth}</h6>
+          <h6>Total Fifth Year: {fifth}</h6>
         </div>
         <br></br>
         <hr></hr>

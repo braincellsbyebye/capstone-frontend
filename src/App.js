@@ -4,9 +4,8 @@ import { Route, Routes} from 'react-router-dom';
 
 import AddStudent from './pages/AddStudent.js';
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Login from "./pages/AdminLogin";
 import Signup from "./pages/Signup";
-import LoginSignup from "./pages/LoginSignup";
 import ForgotPassword from "./pages/ForgotPassword";
 import Verification from "./pages/Verification";
 import CreateNewPassword from "./pages/CreateNewPassword";
@@ -35,6 +34,11 @@ import EditGuardian from './pages/EditGuardian.js';
 import EditAptClinic from './pages/EditApt.js';
 import EditAptDental from './pages/EditAptDental.js';
 import AddMedicalRecord from './pages/AddMedRec.js';
+import Selection from './pages/Selection.js';
+import ClinicPersonnelLogin from './pages/ClinicPLogin.js';
+import DoctorLogin from './pages/DoctorLogin.js';
+import AdminView from './pages/AdminView.js';
+import AdminEdit from './pages/AdminEdit.js';
 
 
 function App() {
@@ -43,7 +47,7 @@ function App() {
     
     <div className="App">
           <Routes>
-            <Route path="/"element={<LoginSignup/>} />
+            <Route path="/"element={<Selection/>} />
             <Route path="/home"element={<Home />} />
             <Route path="/apt"element={<Appointment/>} />
             <Route path="/login"element={<Login/>} />
@@ -66,6 +70,11 @@ function App() {
             <Route path="/edit-aptdental" element={<EditAptDental/>}/>
 
             <Route path="/add-medrec" element={<AddMedicalRecord/>}/>
+
+            <Route path="/cliniclogin" element={<ClinicPersonnelLogin/>}/>
+            <Route path="/doctorlogin" element={<DoctorLogin/>}/>
+            <Route path="/adminview" element={<AdminView/>}/>
+            <Route path="/adminedit" element={<AdminEdit/>}/>
 
             <Route path="/linechart" element={<LineChart />}/>
             <Route path="/dentalapp" element={<DentalAppointment/>} />

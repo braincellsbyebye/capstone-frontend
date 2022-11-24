@@ -112,8 +112,8 @@ function AddMedicalRecord() {
                             type="file"
                             name="cbc"
                             onChange={handleInput}
-                            style={{ height: 50 }}
                             value={studentInput.cbc}
+                            className="form-control"
                         />
                         <span className="text-danger">{studentInput.error_list.cbc}</span>
                     </div>
@@ -124,7 +124,6 @@ function AddMedicalRecord() {
                             name="uri"
                             onChange={handleInput}
                             value={studentInput.uri}
-                            style={{ height: 50 }}
                             className="form-control"
                         />
                         <span className="text-danger">{studentInput.error_list.uri}</span>

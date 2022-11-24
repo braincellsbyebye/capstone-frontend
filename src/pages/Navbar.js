@@ -25,9 +25,6 @@ function Navbar ()
                 <Link className="nav-link" to="/guardian" style={{color:'white', fontSize:20, fontFamily:'serif'}}>Contact Person</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/med" style={{color:'white', fontSize:20, fontFamily:'serif'}}>Medical Certificate Request</Link>
-              </li>
-              <li className="nav-item">
                 <Link className="nav-link" to="/appindex" style={{color:'white', fontSize:20, fontFamily:'serif'}}>Appointments</Link>
               </li>
             </ul>

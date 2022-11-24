@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import { Link } from 'react-router-dom';
 
 function UserProfile() {   
-
+  let user = JSON.parse(localStorage.getItem('user-info'))
   return (
 <>
 <div className="pb-10">
@@ -25,10 +25,10 @@ function UserProfile() {
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
               <div className='user-profile-name'>
-                <text>admin</text>
+                <text>{user.name}</text>
               </div>
                 <div className='user-profile-email'>
-                <text>admin@gmail.com</text>
+                <text>{user.email}</text>
               </div>
               </li>
             </ul>
