@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useLocation } from 'react-router';
+import { Link } from "react-router-dom";
 
 function AddMedicalRecord() {
     const location = useLocation();
     const state = location.state;
-    const history = useNavigate();
 
     const [base, setbase] = useState(null);
     const [fileext, setFileExt] = useState(null);
@@ -94,7 +93,6 @@ function AddMedicalRecord() {
         fileToJson(cbc, setCbcJson);
         fileToJson(uri, setUriJson);
 
-        history('/dashboard')
     };
 
     return (
@@ -138,6 +136,12 @@ function AddMedicalRecord() {
                         </button>
                     </div>
                 </form>
+                <Link to='/dashboard'>
+                    <button className="btn btn-danger">
+                        Back
+                    </button>
+                </Link>
+                
             </div>
         </>
     );

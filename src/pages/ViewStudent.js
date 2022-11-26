@@ -5,31 +5,47 @@ import Navbar from "./Navbar";
 import LineChart from "./LineChart";
 import BCHART from "./BarChart";
 import YRBChart from "./BChartYrlvl";
+import CourseChart from "./LChartCourse";
 
 function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [students, setStudents] = useState([]);
-  const [doctors, setDoctors] = useState([]);
   const [data, setData] = useState('');
 
   const [female, setFemale] = useState('');
   const [male, setMale] = useState('');
 
+  //Religion
   const [rc, setRC] = useState('');
   const [ba, setBA] = useState('');
   const [ig, setIG] = useState('');
   const [prr, setPRR] = useState('');
 
+  //Civil Status
   const [single, setSingle] = useState('');
   const [mar, setMar] = useState('');
   const [sep, setSep] = useState('');
   const [pref, setPref] = useState('');
 
+  //yearlvl
   const [first, setFirst] = useState('');
   const [second, setSecond] = useState('');
   const [third, setThird] = useState('');
   const [fourth, setFourth] = useState('');
   const [fifth, setFifth] = useState('');
+
+  //course
+  const [eng, setEng] = useState('');
+  const [maritime, setMaritime] = useState('');
+  const [educ, setEducation] = useState('');
+  const [nursing, setNursing] = useState('');
+  const [psych, setPsych] = useState('');
+  const [arch, setArch] = useState('');
+  const [acc, setAcc] = useState('');
+  const [aas, setAas] = useState('');
+  const [crim, setCrim] = useState('');
+  const [ccms, setCCMS] = useState('');
+  const [htm, setHTM] = useState('');
 
   const history = useNavigate();
   function logout()
@@ -44,12 +60,6 @@ function Dashboard() {
     axios.get(`/api/students`).then((res) => {
       if (res.status === 200) {
         setStudents(res.data.students);
-        setLoading(false);
-      }
-    });
-    axios.get(`/api/doctors`).then((res) => {
-      if (res.status === 200) {
-        setDoctors(res.data.doctors);
         setLoading(false);
       }
     });
@@ -71,6 +81,7 @@ function Dashboard() {
           setMale(response.data.all)
       }
     });
+    //Religion
     axios.get('/api/RC').then(response => {
       if(response.status === 200)
       {
@@ -95,6 +106,7 @@ function Dashboard() {
           setPRR(response.data.all)
       }
     });
+    //Civil Status
     axios.get('/api/single').then(response => {
       if(response.status === 200)
       {
@@ -119,6 +131,7 @@ function Dashboard() {
           setPref(response.data.all)
       }
     });
+    //YearLevel
     axios.get('/api/first').then(response => {
       if(response.status === 200)
       {
@@ -147,6 +160,73 @@ function Dashboard() {
       if(response.status === 200)
       {
           setFifth(response.data.all)
+      }
+    });
+    //Course
+    axios.get('/api/engineering').then(response => {
+      if(response.status === 200)
+      {
+          setEng(response.data.all)
+      }
+    });
+    axios.get('/api/maritime').then(response => {
+      if(response.status === 200)
+      {
+          setMaritime(response.data.all)
+      }
+    });
+    axios.get('/api/education').then(response => {
+      if(response.status === 200)
+      {
+          setEducation(response.data.all)
+      }
+    });
+    axios.get('/api/nursing').then(response => {
+      if(response.status === 200)
+      {
+          setNursing(response.data.all)
+      }
+    });
+    axios.get('/api/psychology').then(response => {
+      if(response.status === 200)
+      {
+          setPsych(response.data.all)
+      }
+    });
+    axios.get('/api/architecture').then(response => {
+      if(response.status === 200)
+      {
+          setArch(response.data.all)
+      }
+    });
+    axios.get('/api/accountancy').then(response => {
+      if(response.status === 200)
+      {
+          setAcc(response.data.all)
+      }
+    });
+    axios.get('/api/aas').then(response => {
+      if(response.status === 200)
+      {
+          setAas(response.data.all)
+      }
+    });
+    axios.get('/api/criminology').then(response => {
+      if(response.status === 200)
+      {
+          setCrim(response.data.all)
+      }
+    });
+    axios.get('/api/ccms').then(response => {
+      if(response.status === 200)
+      {
+          setCCMS(response.data.all)
+      }
+    });
+    axios.get('/api/htm').then(response => {
+      if(response.status === 200)
+      {
+          setHTM(response.data.all)
       }
     });
   }, []);
@@ -203,33 +283,7 @@ function Dashboard() {
       );
     });
   }
-
-  if (loading) {
-    return <h4>Loading Doctor Data...</h4>;
-  } else {
-    var doctor_TABLE = "";
-
-    doctor_TABLE = doctors.map((doctor, index) => {
-      return (
-        <tr key={index}>
-          <td>{doctor.id}</td>
-          <td>{doctor.docname}</td>
-          <td>{doctor.docposition}</td>
-          <td>
-            <Link
-              to={"/edit-doctor"}
-              state={doctor}
-              className="btn btn-success btn-sm"
-            >
-              Edit
-            </Link>
-          </td>
-        </tr>
-      );
-    });
-  }
   
-
   return (
     <>
       <Navbar />
@@ -261,11 +315,11 @@ function Dashboard() {
           <h6>Total Seperated: {sep}</h6>
           <h6>Total Prefer not to say: {pref}</h6>
         </div>
-        <div style={{ marginLeft: 1000, marginTop: -180 }}>
+        <div style={{ marginLeft: 750, marginTop: -180 }}>
           <h4>Religion Chart</h4>
           <LineChart/>
         </div>
-        <div style={{ marginLeft: 1500, marginTop: -120 }}>
+        <div style={{ marginLeft: 1250, marginTop: -120 }}>
           <h5>Legend:</h5>
           <h6>Total Roman Catholic: {rc}</h6>
           <h6>Total Born Again: {ba}</h6>
@@ -283,6 +337,26 @@ function Dashboard() {
           <h6>Total Third Year: {third}</h6>
           <h6>Total Fourth Year: {fourth}</h6>
           <h6>Total Fifth Year: {fifth}</h6>
+        </div>
+        <div style={{ marginLeft: 750, marginTop: -200 }}>
+          <h4>Course Chart</h4>
+          <CourseChart/>
+        </div>
+        <div style={{ marginLeft: 1250, marginTop: -120 }}>
+          <h5>Legend:</h5>
+          <h6>Total Engineering: {eng}</h6>
+          <h6>Total Maritime: {maritime}</h6>
+          <h6>Total Education: {educ}</h6>
+          <h6>Total Nursing: {nursing}</h6>
+          <h6>Total Psychology: {psych}</h6>
+        </div>
+        <div style={{ marginLeft: 1450, marginTop: -138 }}>
+          <h6>Total Architecture: {arch}</h6>
+          <h6>Total Accountancy: {acc}</h6>
+          <h6>Total Arts and Science: {aas}</h6>
+          <h6>Total Criminology: {crim}</h6>
+          <h6>Total Computing and Multimedia Studies: {ccms}</h6>
+          <h6>Total Hospitality and Tourism Management: {htm}</h6>
         </div>
         <br></br>
         <hr></hr>
@@ -323,37 +397,6 @@ function Dashboard() {
           <tbody>{student_HTMLTABLE}</tbody>
         </table>
       </div>
-      <br></br>
-      <hr></hr>
-      <br></br>
-      <div>
-        <h4 style={{ marginLeft: 50 }}>
-          Doctor Data
-          <Link
-            to={"/add-doctors"}
-            className="btn btn-primary btn-sm float-end"
-          >
-            {" "}
-            Add Doctor
-          </Link>
-        </h4>
-      </div>
-      <div className="col-sm-6 offset-sm-3">
-        <table className="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Doctor Name</th>
-              <th>Doctor Position</th>
-              <th>Edit</th>
-            </tr>
-          </thead>
-          <tbody>{doctor_TABLE}</tbody>
-        </table>
-      </div>
-      <br></br>
-      <hr></hr>
-      <br></br>
     </>
   );
 }
