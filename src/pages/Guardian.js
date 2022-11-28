@@ -10,9 +10,9 @@ function Guardian() {
 
 
   useEffect(() => {
-    axios.get(`/api/guardian`).then((res) => {
+    axios.get(`/api/studjoin`).then((res) => {
       if (res.status === 200) {
-        setGuardian(res.data.guardian);
+        setGuardian(res.data.all);
         setLoading(false);
       }
     });
@@ -20,18 +20,20 @@ function Guardian() {
 
   async function search(key) {
     console.warn(key)
-    let result = await fetch("http://localhost:8000/api/search-guardian/"+key);
+    let result = await fetch("http://localhost:8000/api/join/"+key);
     console.log(result);
     result = await result.json();
 
     var student_HTMLTABLE = result.map((item, index) => {
       return (
         <tr key={index}>
+          <td>{item.student_id}</td>
+          <td>{item.fname}</td>
+          <td>{item.lname}</td>
           <td>{item.id}</td>
           <td>{item.name}</td>
           <td>{item.num}</td>
           <td>{item.relts}</td>
-          <td>{item.student_id}</td>
           <td>
             <Link
               to={"/edit-guardian"}
@@ -55,11 +57,13 @@ function Guardian() {
     student_HTMLTABLE = guardian.map((item, index) => {
       return (
         <tr key={index}>
+          <td>{item.student_id}</td>
+          <td>{item.fname}</td>
+          <td>{item.lname}</td>
           <td>{item.id}</td>
           <td>{item.name}</td>
           <td>{item.num}</td>
           <td>{item.relts}</td>
-          <td>{item.student_id}</td>
           <td>
             <Link
               to={"/edit-guardian"}
@@ -86,12 +90,14 @@ function Guardian() {
           <table className="table table-bordered table-striped">
           <thead>
               <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Contact Number</th>
-              <th>Relation to Student</th>
-              <th>Student ID</th>
-              <th>Edit</th>
+                <th>Student ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Contact Person ID</th>
+                <th>Contact Person Name</th>
+                <th>Contact Person Number</th>
+                <th>Relation to Student</th>
+                <th>Edit</th>
               </tr>
           </thead>
           <tbody>{table}</tbody>
@@ -109,11 +115,13 @@ function Guardian() {
         <table className="table table-bordered table-striped">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Contact Number</th>
-              <th>Relation to Student</th>
               <th>Student ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Contact Person ID</th>
+              <th>Contact Person Name</th>
+              <th>Contact Person Number</th>
+              <th>Relation to Student</th>
               <th>Edit</th>
             </tr>
           </thead>
