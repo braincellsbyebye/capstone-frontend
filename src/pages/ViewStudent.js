@@ -12,8 +12,11 @@ function Dashboard() {
   const [students, setStudents] = useState([]);
   const [data, setData] = useState('');
 
+  //count
   const [female, setFemale] = useState('');
   const [male, setMale] = useState('');
+  const [stud, setStud] = useState('');
+  const [emp, setEmp] = useState('');
 
   //Religion
   const [rc, setRC] = useState('');
@@ -33,6 +36,7 @@ function Dashboard() {
   const [third, setThird] = useState('');
   const [fourth, setFourth] = useState('');
   const [fifth, setFifth] = useState('');
+  const [sixth, setSixth] = useState('');
 
   //course
   const [eng, setEng] = useState('');
@@ -229,6 +233,24 @@ function Dashboard() {
           setHTM(response.data.all)
       }
     });
+    axios.get('/api/studcount').then(response => {
+      if(response.status === 200)
+      {
+          setStud(response.data.all)
+      }
+    });
+    axios.get('/api/employeecount').then(response => {
+      if(response.status === 200)
+      {
+          setEmp(response.data.all)
+      }
+    });
+    axios.get('/api/sixth').then(response => {
+      if(response.status === 200)
+      {
+          setSixth(response.data.all)
+      }
+    });
   }, []);
 
   if (loading) {
@@ -242,6 +264,7 @@ function Dashboard() {
           <td>{item.id}</td>
           <td>{item.fname}</td>
           <td>{item.lname}</td>
+          <td>{item.category}</td>
           <td>{item.bday}</td>
           <td>{item.sex}</td>
           <td>{item.phone}</td>
@@ -298,9 +321,11 @@ function Dashboard() {
         <br></br>
         <br></br>
         <div style={{ marginLeft: 40 }}>
-          <h6>Total Number of Students: {data}</h6>
+          <h6>Total Number of Users: {data}</h6>
           <h6>Total Number of Female Students: {female}</h6>
           <h6>Total Number of Male Students: {male}</h6>
+          <h6>Total Number of Students: {stud}</h6>
+          <h6>Total Number of Employees: {emp}</h6>
         </div>
         <br></br>
         <br></br>
@@ -337,6 +362,7 @@ function Dashboard() {
           <h6>Total Third Year: {third}</h6>
           <h6>Total Fourth Year: {fourth}</h6>
           <h6>Total Fifth Year: {fifth}</h6>
+          <h6>Total Employee: {sixth}</h6>
         </div>
         <div style={{ marginLeft: 750, marginTop: -200 }}>
           <h4>Course Chart</h4>
@@ -349,9 +375,9 @@ function Dashboard() {
           <h6>Total Education: {educ}</h6>
           <h6>Total Nursing: {nursing}</h6>
           <h6>Total Psychology: {psych}</h6>
+          <h6>Total Architecture: {arch}</h6>
         </div>
         <div style={{ marginLeft: 1450, marginTop: -138 }}>
-          <h6>Total Architecture: {arch}</h6>
           <h6>Total Accountancy: {acc}</h6>
           <h6>Total Arts and Science: {aas}</h6>
           <h6>Total Criminology: {crim}</h6>
@@ -362,13 +388,13 @@ function Dashboard() {
         <hr></hr>
         <br></br>
         <h4 style={{ marginLeft: 50 }}>
-          Students Data
+          Medical Data
           <Link
             to={"/add-students"}
             className="btn btn-primary btn-sm float-end"
           >
             {" "}
-            Add Student
+            Add User
           </Link>
         </h4>
       </div>
@@ -379,6 +405,7 @@ function Dashboard() {
               <th>ID</th>
               <th>First Name</th>
               <th>Last Name</th>
+              <th>Category</th>
               <th>Birthdate</th>
               <th>Sex</th>
               <th>Phone</th>

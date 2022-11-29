@@ -7,6 +7,7 @@ function AddStudent() {
   const history = useNavigate();
   const [fname, setFname]=useState("")
   const [lname, setlname]=useState("")
+  const [category, setCategory]=useState("")
   const [bday, setbday]=useState("")
   const [sex, setsex]=useState("")
   const [course, setcourse]=useState("")
@@ -22,6 +23,7 @@ function AddStudent() {
     const formData = new FormData();
     formData.append('fname', fname);
     formData.append('lname', lname);
+    formData.append('category', category);
     formData.append('bday', bday);
     formData.append('sex', sex);
     formData.append('course', course);
@@ -132,6 +134,13 @@ function AddStudent() {
             />
           </div>
           <div className="form-group mb-3">
+            <label>Category</label>
+            <select type="text" name="category" onChange={(e) => setCategory(e.target.value)} className="form-control">
+              <option value="Student">Student</option>
+              <option value="Employee">Employee</option>
+            </select>
+          </div>
+          <div className="form-group mb-3">
             <label>Birthdate</label>
             <input
               type="date"
@@ -172,6 +181,7 @@ function AddStudent() {
               <option value="Criminology">Criminology</option>
               <option value="Computing and Multimedia Studies">Computing and Multimedia Studies</option>
               <option value="Hospitality and Tourism Management">Hospitality and Tourism Management</option>
+              <option value="N/A">N/A</option>
             </select>
           </div>
           <div className="form-group mb-3">
@@ -182,6 +192,7 @@ function AddStudent() {
               <option value="3rdYear">3rd Year</option>
               <option value="4thYear">4th Year</option>
               <option value="5thYear">5th Year</option>
+              <option value="N/A">N/A</option>
             </select>
           </div>
           <div className="form-group mb-3">
